@@ -14,10 +14,11 @@ Ashley
 - // game design document
 
 Bharathi 
-- // game design document 
+- // writer: writing text for dialogue/narration/pager/item text
+	- designing puzzles? narrative? anything involving not coding
 - HUD
      - mini map? 
-     - frickin screen fade have fun dude
+     - screen transitions
 
 Deepti
 - GameControl
@@ -27,7 +28,7 @@ Kavi
      - maybe random generation if game design permits
 
 Keerthana
-- choose whatever you want
+- add whatever you want
 
 
 Other
@@ -35,6 +36,7 @@ Other
 - Menu and MainControl
 - Player
 - Weapon
+- other listed features
 
 GAME BRAINSTORM  ----------------------------------------------------------------------------------------
 ***
