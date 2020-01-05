@@ -36,8 +36,16 @@ Other
 - Player
 - Weapon
 
-
-
+GAME DESCRIPTION  ----------------------------------------------------------------------------------------
+- Game takes place in a hospital where a zombie outbreak has occurred (maybe by some noxious gas in the air system)
+- Player (may) start out being infected with the virus, and they have to escape the hospital (ie find help)
+	before the virus completely overtakes their body. (Use a timer system or a sanity bar)
+	Possible elements: 
+		- If you want to keep the "clay" idea: player has tourniqueted "zombie" arm (arm got bitten off and is infected). 
+			They can steal the arms of zombies they've killed and sew them onto their own arm for power ups
+		- If sanity hits 0, player becomes a zombie. Player is more powerful when they are less sane (bc zombies > humans) so 
+			you have to gamble like that
+		- Player needs to stop the infection from spreading
 
 GAME CONTROLS --------------------------------------------------------------------------------------------
 
