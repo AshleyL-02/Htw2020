@@ -36,16 +36,52 @@ Other
 - Player
 - Weapon
 
-GAME DESCRIPTION  ----------------------------------------------------------------------------------------
-- Game takes place in a hospital where a zombie outbreak has occurred (maybe by some noxious gas in the air system)
-- Player (may) start out being infected with the virus, and they have to escape the hospital (ie find help)
-	before the virus completely overtakes their body. (Use a timer system or a sanity bar)
-	Possible elements: 
-		- If you want to keep the "clay" idea: player has tourniqueted "zombie" arm (arm got bitten off and is infected). 
-			They can steal the arms of zombies they've killed and sew them onto their own arm for power ups
-		- If sanity hits 0, player becomes a zombie. Player is more powerful when they are less sane (bc zombies > humans) so 
-			you have to gamble like that
-		- Player needs to stop the infection from spreading
+GAME BRAINSTORM  ----------------------------------------------------------------------------------------
+***
+	add ideas; none are set in stone
+***
+
+- Game takes place in a hospital where a zombie outbreak has occurred (maybe by some noxious gas in the air system).
+- Player must escape hospital and avoid or fight zombies
+- 2.5D (pokemon/rpg-style) game view
+
+Possible features:
+- combat system 
+	Option 1: If you want to keep the "clay" idea: player has tourniqueted "zombie" arm (arm got bitten off and is infected). 
+		They can steal the arms of zombies they've killed and sew them onto their own arm for power ups
+	Option 2: Player uses things they find in the hospital (shooty shoots, pointy things, le crowbar, fire extinguisher) to attack 
+		zombies. 
+		
+- enemy system
+	- zombie swarms, or specialized zombie bosses, or both? What kind of enemy distribution do we want
+	
+- Wumpus: wanders around rooms
+	- The mega zombie. Idk about backstory but its pretty gnarly
+	*- Player may or may not be able to defeat it. We should think of some gameplay mechanic involving the wumpus 
+	- Lights: when player is within 1 room of wumpus, lights flicker. If they're in the room w/ wumpus, lights OUT! UR dead
+	
+- Timer or sanity: Player starts out infected; they have to escape the hospital before they turn into a zombie
+	Option 1: Sanity bar: when it hits 0, player becomes a zombie. Player is more powerful when they are less sane (bc 
+		zombies > humans). They may have to gamble their sanity to get through obstacles
+	Option 2: Timer system: player has a watch they can pull up to check time. E.g. they get bitten at 10:00 am, and have 
+		two in-game hours (until 12:00 pm) to escape before they become a zombie. 
+		Certain game events happen at certain times (eg. at 11:20, the Wumpus appears. At 10:30 zombies from the 	
+		pediatrics ward break loose, you know, etc.)
+			Suboption (I feel like this would be a hassle): You can save people from getting infected (eg. Dr. Damsel gets 
+				bitten by a pediatric-ward zombie at 10:35, but if you barricade the p-ward before 10:30 you can save 
+				the good doctor)
+- One-way pager: npc kid with a one-way pager
+	- A really smart kid got trapped in the security camera room with a one-way pager (ofc) and is sending you messages 
+		with useful info (eg. Wumpus location, reconnaissance, door passwords, puzzle info, backstory)
+	- Kid makes bad jokes
+	- Kid makes game less shooty and more feely
+	- You can find the room where the kid is trapped and escort-mission them (piggyback ride?) out of the hospital 
+		
+- Feature: item info
+	- rpg thing where interacting with items gives you a description of them
+		- collect items to solve puzzles?
+			- solve puzzles with the help of Pager kid?
+	
 
 GAME CONTROLS --------------------------------------------------------------------------------------------
 
