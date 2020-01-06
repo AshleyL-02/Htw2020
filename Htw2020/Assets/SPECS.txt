@@ -7,9 +7,9 @@ Alex
 - Wumpus
 
 Ashley
-- Item manager (for info when interacted with)
+- Item manager/inventory (for info when interacted with)
 - Sprite Sorting (combine w/ above?)
-- Dialogue
+- Dialogue/story manager
 
 - // game design document
 
@@ -60,6 +60,8 @@ Possible features:
 - Wumpus: wanders around rooms
 	- The mega zombie. Idk about backstory but its pretty gnarly
 	*- Player may or may not be able to defeat it. We should think of some gameplay mechanic involving the wumpus 
+		- maybe the wumpus has some electrical ability the player needs to steal in order to open the hospital exit, but 
+			they can only defeat the wumpus after they gain some other ability first
 	- Lights: when player is within 1 room of wumpus, lights flicker. If they're in the room w/ wumpus, lights OUT! UR dead
 	
 - Timer or sanity: Player starts out infected; they have to escape the hospital before they turn into a zombie
@@ -78,10 +80,12 @@ Possible features:
 	- Kid makes bad jokes
 	- Kid makes game less shooty and more feely
 	- You can find the room where the kid is trapped and escort-mission them (piggyback ride?) out of the hospital 
+	- You can press 'z' to sit down and unsit, prompting interaction with the kid. (e.g. the kid tells you to sit once for 'Yes'
+		and twice for 'no', sit for 5 seconds to have a little chat, etc.)
 		
 - Feature: item info
 	- rpg thing where interacting with items gives you a description of them
-		- collect items to solve puzzles?
+		- collect items to solve puzzles? -> need an inventory system. gross.
 			- solve puzzles with the help of Pager kid?
 	
 
