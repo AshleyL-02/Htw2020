@@ -36,6 +36,7 @@ Other
 - Menu and MainControl
 - Player
 - Weapon
+- // designing game map + rooms
 - other listed features
 
 GAME BRAINSTORM  ----------------------------------------------------------------------------------------
@@ -46,6 +47,10 @@ GAME BRAINSTORM  ---------------------------------------------------------------
 - Game takes place in a hospital where a zombie outbreak has occurred (maybe by some noxious gas in the air system).
 - Player must escape hospital and avoid or fight zombies
 - 2.5D (pokemon/rpg-style) game view
+- camera follows character (like Earthbound) so character is fixed at center of screen. May require extra programming to limit camera
+	to 1-way scrolling in hallways, etc. if necessary.
+- character can only see contents of one room at a time
+	
 
 Possible features:
 - combat system 
@@ -60,8 +65,9 @@ Possible features:
 - Wumpus: wanders around rooms
 	- The mega zombie. Idk about backstory but its pretty gnarly
 	*- Player may or may not be able to defeat it. We should think of some gameplay mechanic involving the wumpus 
-		- maybe the wumpus has some electrical ability the player needs to steal in order to open the hospital exit, but 
-			they can only defeat the wumpus after they gain some other ability first
+		- maybe the wumpus has some electrical ability (causes anomalies, hence light flicker), which the player needs to 
+			steal in order to open the hospital exit, but they can only defeat the wumpus after they gain some other 
+			ability first
 	- Lights: when player is within 1 room of wumpus, lights flicker. If they're in the room w/ wumpus, lights OUT! UR dead
 	
 - Timer or sanity: Player starts out infected; they have to escape the hospital before they turn into a zombie
@@ -87,6 +93,8 @@ Possible features:
 	- rpg thing where interacting with items gives you a description of them
 		- collect items to solve puzzles? -> need an inventory system. gross.
 			- solve puzzles with the help of Pager kid?
+			
+- minimap of hospital
 	
 
 GAME CONTROLS --------------------------------------------------------------------------------------------
