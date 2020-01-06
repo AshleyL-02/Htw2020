@@ -24,7 +24,7 @@ Deepti
 - GameControl
 
 Kavi
-- Map/Cave/Navigation/Location
+- Navigation
      - maybe random generation if game design permits
 
 Keerthana
@@ -47,10 +47,25 @@ GAME BRAINSTORM  ---------------------------------------------------------------
 - Game takes place in a hospital where a zombie outbreak has occurred (maybe by some noxious gas in the air system).
 - Player must escape hospital and avoid or fight zombies
 - 2.5D (pokemon/rpg-style) game view
-- camera follows character (like Earthbound) so character is fixed at center of screen. May require extra programming to limit camera
-	to 1-way scrolling in hallways, etc. if necessary.
-- character can only see contents of one room at a time
-	
+
+
+- Navigation:
+	- figure out some environment display system
+		- probably tilemap-based map
+	- walls have continuous colliders
+	- system of classifying different rooms
+	- method to load a new specific room (given a parameter)
+		- character can only see contents of one room at a time
+		- maybe (probably not) use scenes to load new rooms. Probably just hide (black out) unactive rooms. 
+			Use scenes to load new floors
+	- Player-based navi elements: (player will probably code these)
+		- doors (press E down and up to enter, probably)
+		- camera follows character (like Earthbound) so character is fixed at center of screen. 
+			May require extra programming to limit camera to 1-way scrolling in hallways, etc. if necessary.
+			
+	> navigation code flow: player presses 'e' down and up in door zone -> player lets GameControl know a 
+		door wants to be opened -> GameControl tells NaviUI Monobehaviour to load intended room (+ HUD fade?) 
+		-> GameControl tells Player their "location" has changed, potentially, if we're doing that weirdness
 
 Possible features:
 - combat system 
@@ -95,6 +110,7 @@ Possible features:
 			- solve puzzles with the help of Pager kid?
 			
 - minimap of hospital
+- save files
 	
 
 GAME CONTROLS --------------------------------------------------------------------------------------------
