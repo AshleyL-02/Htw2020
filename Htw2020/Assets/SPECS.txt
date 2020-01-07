@@ -1,5 +1,9 @@
 Game Specifications document
 
+Using Unity version 2018.3.11f1
+
+Beginner guide to Unity: https://www.freecodecamp.org/news/the-ultimate-beginners-guide-to-game-development-in-unity-f9bfe972c2b5/
+
 CLASSES --------------------------------------------------------------------------------------------------
 
 Alex
