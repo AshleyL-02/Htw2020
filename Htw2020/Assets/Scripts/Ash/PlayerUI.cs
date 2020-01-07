@@ -12,7 +12,7 @@ public class PlayerUI : MonoBehaviour
     private Collider2D myCollider;
 
     //Movement/input-related fields (consider putting in player data class?)
-    private static readonly float SPEED = 4.8f;
+    private static readonly float SPEED = 3.8f;
     private static readonly float SPRINT_MULTIPLIER = 1.8f;
 
     private float speedMultiplier = SPEED;
@@ -40,7 +40,7 @@ public class PlayerUI : MonoBehaviour
     
     void Update()
     {
-        
+        readInput();
     }
     private void FixedUpdate()
     {
@@ -50,17 +50,23 @@ public class PlayerUI : MonoBehaviour
 
     //PRIVATE METHODS
 
+
+    //Input methods
+    private void readInput()
+    {
+        readSprintInput();
+    }
     private void readMovementInput() //work on controls so the velocity is correct against walls
     {
         Vector2 movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); 
-        float movementSpeed = Mathf.Clamp(movementDirection.magnitude, 0.0f, 1.0f); //Im not sure how necessary this is for keyboard controls
+        float movementSpeed = Mathf.Clamp(movementDirection.magnitude, 0.0f, 1.0f); //not sure how necessary this is for keyboard controls
         movementDirection.Normalize();
 
         myRigidbody.velocity = movementDirection * movementSpeed * speedMultiplier;
     }
     private void readSprintInput()
     {
-        if (Input.GetButton("Sprint"))  //sprint, boy, sprint!
+        if (Input.GetButton("Sprint"))  //use event trigger. change it asap
         {
             speedMultiplier = SPEED * SPRINT_MULTIPLIER;
         }
