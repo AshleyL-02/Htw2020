@@ -15,26 +15,58 @@ public class PlayerUI : MonoBehaviour
     private static readonly float SPEED = 4.8f;
     private static readonly float SPRINT_MULTIPLIER = 1.8f;
 
+    private float speedMultiplier = SPEED;
+
+
+
 
     private void Awake()
     {
-        
+        myRigidbody = GetComponent<Rigidbody2D>();
+        myCollider = GetComponent<Collider2D>();
     }
 
-    // Start is called before the first frame update
+    
     void Start()
     {
-        //temp 1
+        //t temp 1
         this.transform.position = START_COOR;
 
 
-        //temp 1
+        //t temp 1
 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
+    }
+    private void FixedUpdate()
+    {
+        readMovementInput();
+    }
+
+
+    //PRIVATE METHODS
+
+    private void readMovementInput() //work on controls so the velocity is correct against walls
+    {
+        Vector2 movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); 
+        float movementSpeed = Mathf.Clamp(movementDirection.magnitude, 0.0f, 1.0f); //Im not sure how necessary this is for keyboard controls
+        movementDirection.Normalize();
+
+        myRigidbody.velocity = movementDirection * movementSpeed * speedMultiplier;
+    }
+    private void readSprintInput()
+    {
+        if (Input.GetButton("Sprint"))  //sprint, boy, sprint!
+        {
+            speedMultiplier = SPEED * SPRINT_MULTIPLIER;
+        }
+        else
+        {
+            speedMultiplier = SPEED;
+        }
     }
 }
