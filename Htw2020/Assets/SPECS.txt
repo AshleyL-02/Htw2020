@@ -54,21 +54,22 @@ GAME BRAINSTORM  ---------------------------------------------------------------
 		- probably tilemap-based map
 	- walls have continuous colliders
 	- system of classifying different rooms
+		- system of keeping track of room contents (e.g. room 3h has 3 red zombies and 2 children)
 	- method to load a new specific room (given a parameter)
 		- character can only see contents of one room at a time
 		- maybe (probably not) use scenes to load new rooms. Probably just hide (black out) unactive rooms. 
 			Use scenes to load new floors
 	- Player-based navi elements: (player will probably code these)
-		- doors (press E down and up to enter, probably)
+		- doors (press E down and up to enter)
+	***** IMPORTANT ***	Each door contains info (a string name?) on the room it leads to. (to keep track of player location)
 		- camera follows character (like Earthbound) so character is fixed at center of screen. 
-			May require extra programming to limit camera to 1-way scrolling in hallways, etc. if necessary.
 			
 	> navigation code flow: player presses 'e' down and up in door zone -> player lets GameControl know a 
 		door wants to be opened -> GameControl tells NaviUI Monobehaviour to load intended room (+ HUD fade?) 
 		-> GameControl tells Player their "location" has changed, potentially, if we're doing that weirdness
 
 Possible features:
-- combat system 
+- combat system (weapons)
 	Option 1: If you want to keep the "clay" idea: player has tourniqueted "zombie" arm (arm got bitten off and is infected). 
 		They can steal the arms of zombies they've killed and sew them onto their own arm for power ups
 	Option 2: Player uses things they find in the hospital (shooty shoots, pointy things, le crowbar, fire extinguisher) to attack 
@@ -104,7 +105,7 @@ Possible features:
 	- You can press 'z' to sit down and unsit, prompting interaction with the kid. (e.g. the kid tells you to sit once for 'Yes'
 		and twice for 'no', sit for 5 seconds to have a little chat, etc.)
 		
-- Feature: item info
+- Feature: item info and inventory
 	- rpg thing where interacting with items gives you a description of them
 		- collect items to solve puzzles? -> need an inventory system. gross.
 			- solve puzzles with the help of Pager kid?
@@ -113,6 +114,17 @@ Possible features:
 - save files
 	
 
+GAME NARRATIVE (rough) -----------------------------------------------------------------------------------
+- phase 0: mc wakes up to hear a beeping pager. They're stuck in a room with a bleeding arm (their arm)
+	- find tourniquet
+	- escape room
+- phase 1: encounter and rek zombies. gain powers
+- phase 2: wumpus
+- ending: escape hospital, where medics un-zombie mc
+
+ART ------------------------------------------------------------------------------------------------------
+- 16x16 or 32x32 px?
+
 GAME CONTROLS --------------------------------------------------------------------------------------------
 
 what ever
@@ -120,8 +132,9 @@ what ever
 tips :p  ---------------------------------------------------------------------------
 https://www.gamasutra.com/blogs/HermanTulleken/20160812/279100/50_Tips_and_Best_Practices_for_Unity_2016_Edition.php (reaadd me)
 
-	-  push and pull requests often to avoid merge conflicts (at least once an hour)
-	-  keep the Update method as sparse as possible (it should only call methods; no logic)
+	-  push and pull often to avoid merge conflicts (at least once an hour)
+	-  keep the Update method as sparse as possible (it should only call methods; no logic).
+	-  Use as many classes as needed to avoid clutter
 	-  Create a prefab for every in-game object you make, in case it accidentally gets deleted. Remember to update the prefab as well
 	-  We can't use System.Out.whatever so use Debug.Log("whatever") for debugging. This only works in MonoBehaviours though
 	-  Delete the " : Monobehaviour " line from your script unless you actually need it to be a Monobehaviour
@@ -132,5 +145,5 @@ https://www.gamasutra.com/blogs/HermanTulleken/20160812/279100/50_Tips_and_Best_
 	-  Renaming things in your code: don’t just delete the text and retype it. Right-click the method, variable, file, etc. you want to rename and press “rename”—this lets you rename all instances of the name at once.
 		-  in Unity, you have to rename C# scripts twice: first, go to Unity right-click the script you want to rename and press “rename” (to rename the file name).
 		-  Then, open the script and right-click its name to rename (rename the class’s name). Class and file names have to match.
-
+	- set sprite pivot points to the bottom center of sprites, not the middle
 
