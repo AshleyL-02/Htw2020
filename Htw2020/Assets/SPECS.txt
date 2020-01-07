@@ -146,4 +146,12 @@ https://www.gamasutra.com/blogs/HermanTulleken/20160812/279100/50_Tips_and_Best_
 		-  in Unity, you have to rename C# scripts twice: first, go to Unity right-click the script you want to rename and press “rename” (to rename the file name).
 		-  Then, open the script and right-click its name to rename (rename the class’s name). Class and file names have to match.
 	- set sprite pivot points to the bottom center of sprites, not the middle
+	
+techniques ----------------------------------------------------------------------------------------------------
+
+- Coroutines: use for actions that occur over time (like transitions)
+- Event system: use to listen for a certain trigger (e.g. door opening)
+	https://www.youtube.com/watch?v=gx0Lt4tCDE0
+- State machine: use to 'plug in' different behaviors (e.g. equipping different weapons, enemy behavior) instead of using
+	case and switch or if/else statements
 
