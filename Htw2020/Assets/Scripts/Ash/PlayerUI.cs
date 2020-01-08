@@ -26,18 +26,8 @@ public class PlayerUI : MonoBehaviour
     private static readonly float SPRINT_MULTIPLIER = 2.0f;
 
     private float speedMultiplier = SPEED;
-    private Direction lastFacingDirection_old = Direction.DOWN;
     private Vector2 lastFacingDirection = Vector2.down;
         
-
-
-    private enum Direction
-    {
-        UP,
-        RIGHT,
-        DOWN,
-        LEFT
-    }
 
     private void Awake()
     {
@@ -86,37 +76,39 @@ public class PlayerUI : MonoBehaviour
 
         return movementDirection;
     }
+
+
+    //Mutators
+
+
+    //PRIVATE METHODS
     private Vector2 cardinalizeVector(Vector2 movementDirection)    //turn vector into an up, down, left, or right vector
     {
         Vector2 cardinal = Vector2.down;
-        if(movementDirection == Vector2.zero)
+        if (movementDirection == Vector2.zero)
         {
             Debug.LogError("incorrect vector");
-            return cardinal;         
+            return cardinal;
         }
-        else if(movementDirection.y > 0.4)
+        else if (movementDirection.y > 0.4)
         {
             cardinal = Vector2.up;
         }
-        else if(movementDirection.y < -0.4)
+        else if (movementDirection.y < -0.4)
         {
             cardinal = Vector2.down;
         }
-        else if(movementDirection.x > 0)
+        else if (movementDirection.x > 0)
         {
             cardinal = Vector2.right;
         }
-        else if(movementDirection.x < 0)
+        else if (movementDirection.x < 0)
         {
             cardinal = Vector2.left;
         }
         return cardinal;
     }
 
-    //Mutators
-
-
-    //PRIVATE METHODS
     private void setMovementAnimation()
     {
         Vector2 movementDirection = getInputMovementDirection();
@@ -173,15 +165,14 @@ public class PlayerUI : MonoBehaviour
                 facingDirection = cardinalizeVector(facingDirection);
             }
 
-            // raycast in facing direction
-            Debug.DrawLine((Vector2)this.transform.position, (Vector2)this.transform.position + facingDirection, Color.red, 1.0f);
-            RaycastHit2D interactRay = Physics2D.Raycast((Vector2)this.transform.position, facingDirection, 1.0f);//change to arrow direction
+            // raycast in facing direction. note myCollider.offset.y because the ray needs to start "between the feet"
+            Debug.DrawLine(new Vector2(this.transform.position.x, this.transform.position.y + myCollider.offset.y), new Vector2(this.transform.position.x, this.transform.position.y + myCollider.offset.y) + facingDirection, Color.red, 1.0f);
+            RaycastHit2D interactRay = Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y + myCollider.offset.y), facingDirection, 1.0f);//change to arrow direction
 
-            if(interactRay.collider != null)
+            if (interactRay.collider != null)
             {
                 Debug.Log(interactRay.collider.ToString());
             }
-
         }
     }
 }

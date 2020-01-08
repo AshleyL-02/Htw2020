@@ -117,6 +117,7 @@ Possible features:
 			
 - minimap of hospital
 - save files
+- add shadows to characters
 	
 
 GAME NARRATIVE (rough) -----------------------------------------------------------------------------------
