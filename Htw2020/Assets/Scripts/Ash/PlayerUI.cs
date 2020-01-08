@@ -41,6 +41,17 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         readInput();
+
+
+        //temp 2
+        /*
+        if (Input.GetButtonDown("Select"))
+        {
+            GameEvents_temp.current.InteractTrigger();
+            Debug.Log("pressed select");
+        }
+        */
+        //temp 2
     }
     private void FixedUpdate()
     {
@@ -55,6 +66,7 @@ public class PlayerUI : MonoBehaviour
     private void readInput()
     {
         readSprintInput();
+        readSelectInput();
     }
     private void readMovementInput() //work on controls so the velocity is correct against walls
     {
@@ -73,6 +85,29 @@ public class PlayerUI : MonoBehaviour
         else
         {
             speedMultiplier = SPEED;
+        }
+    }
+    private void readSelectInput()
+    {
+
+        if (Input.GetButtonDown("Select"))
+        {
+            // checking if theres something to interact with
+
+            //! raycast for a gameobject on x layer, with y type
+            RaycastHit2D[] results = new RaycastHit2D[2];
+
+            Physics2D.Raycast((Vector2)this.transform.position, Vector2.up, new ContactFilter2D(), results, 1.0f);
+            //RaycastHit2D interactRay = Physics2D.Raycast((Vector2)this.transform.position, Vector2.up, 1.0f);//change to arrow direction
+
+            foreach(RaycastHit2D rc in results)
+            {
+                if(rc.collider != null)
+                {
+                    Debug.Log(rc.collider.ToString());
+                }
+            }
+            
         }
     }
 }
