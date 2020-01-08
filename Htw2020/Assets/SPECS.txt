@@ -50,7 +50,7 @@ GAME BRAINSTORM  ---------------------------------------------------------------
 - Game takes place in a hospital where a zombie outbreak has occurred (maybe by some noxious gas in the air system).
 - Player must escape hospital and avoid or fight zombies
 - 2.5D (pokemon/rpg-style) game view
-
+- Aspect Ratio: 16:9
 
 - Navigation:
 	- figure out some environment display system
@@ -75,9 +75,9 @@ Possible features:
 - combat system (weapons)
 	Option 1: If you want to keep the "clay" idea: player has tourniqueted "zombie" arm (arm got bitten off and is infected). 
 		They can steal the arms of zombies they've killed and sew them onto their own arm for power ups
+		4 directions or infinite?
 	Option 2: Player uses things they find in the hospital (shooty shoots, pointy things, le crowbar, fire extinguisher) to attack 
 		zombies. 
-		
 - enemy system
 	- zombie swarms, or specialized zombie bosses, or both? What kind of enemy distribution do we want
 	
