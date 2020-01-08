@@ -21,7 +21,7 @@ public class PlayerUI : MonoBehaviour
 
     //Movement/input-related fields (consider putting in player data class?)
     private static readonly float SPEED = 1.8f;
-    private static readonly float SPRINT_MULTIPLIER = 1.8f;
+    private static readonly float SPRINT_MULTIPLIER = 2.0f;
 
     private float speedMultiplier = SPEED;
 
@@ -48,7 +48,7 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         readInput();
-
+        setMovementAnimation();
 
         //temp 2
         /*
@@ -63,7 +63,7 @@ public class PlayerUI : MonoBehaviour
     private void FixedUpdate()
     {
         readMovementInput();
-        setMovementAnimation();
+        
     }
 
     //ACCESSORs
@@ -88,7 +88,8 @@ public class PlayerUI : MonoBehaviour
             myAnimator.SetFloat("Horizontal", movementDirection.x);
             myAnimator.SetFloat("Vertical", movementDirection.y);
         }       
-        myAnimator.SetFloat("Speed", movementDirection.magnitude);
+        myAnimator.SetFloat("Speed", movementDirection.magnitude * speedMultiplier/SPEED);  //dumb math trick. change to check if sprinting if you have time
+        Debug.Log(movementDirection.magnitude * speedMultiplier / SPEED);
     }
 
     //Input methods
