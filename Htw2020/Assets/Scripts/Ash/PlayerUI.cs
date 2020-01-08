@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * Fix movement/input lag 
  * 
+ * "cardinalizing" movement direction will be unnecessary if sprite can face 8 directions
  * 
  * 
  */
+
+
 
 public class PlayerUI : MonoBehaviour
 {
@@ -24,9 +26,18 @@ public class PlayerUI : MonoBehaviour
     private static readonly float SPRINT_MULTIPLIER = 2.0f;
 
     private float speedMultiplier = SPEED;
+    private Direction lastFacingDirection_old = Direction.DOWN;
+    private Vector2 lastFacingDirection = Vector2.down;
+        
 
 
-
+    private enum Direction
+    {
+        UP,
+        RIGHT,
+        DOWN,
+        LEFT
+    }
 
     private void Awake()
     {
@@ -75,6 +86,32 @@ public class PlayerUI : MonoBehaviour
 
         return movementDirection;
     }
+    private Vector2 cardinalizeVector(Vector2 movementDirection)    //turn vector into an up, down, left, or right vector
+    {
+        Vector2 cardinal = Vector2.down;
+        if(movementDirection == Vector2.zero)
+        {
+            Debug.LogError("incorrect vector");
+            return cardinal;         
+        }
+        else if(movementDirection.y > 0.4)
+        {
+            cardinal = Vector2.up;
+        }
+        else if(movementDirection.y < -0.4)
+        {
+            cardinal = Vector2.down;
+        }
+        else if(movementDirection.x > 0)
+        {
+            cardinal = Vector2.right;
+        }
+        else if(movementDirection.x < 0)
+        {
+            cardinal = Vector2.left;
+        }
+        return cardinal;
+    }
 
     //Mutators
 
@@ -89,7 +126,7 @@ public class PlayerUI : MonoBehaviour
             myAnimator.SetFloat("Vertical", movementDirection.y);
         }       
         myAnimator.SetFloat("Speed", movementDirection.magnitude * speedMultiplier/SPEED);  //dumb math trick. change to check if sprinting if you have time
-        Debug.Log(movementDirection.magnitude * speedMultiplier / SPEED);
+        
     }
 
     //Input methods
@@ -104,6 +141,11 @@ public class PlayerUI : MonoBehaviour
         float movementSpeed = Mathf.Clamp(movementDirection.magnitude, 0.0f, 1.0f); //not sure how necessary this is for keyboard controls
 
         myRigidbody.velocity = movementDirection * movementSpeed * speedMultiplier;
+
+        if(movementDirection != Vector2.zero)   //set lastDirection
+        {
+            lastFacingDirection = new Vector2(movementDirection.x, movementDirection.y);
+        }    
     }
     
     private void readSprintInput()
@@ -124,16 +166,22 @@ public class PlayerUI : MonoBehaviour
         {
             // checking if theres something to interact with
 
-            // raycast for a gameobject (//! add layer filter?)
+            //getting player's facing direction
+            Vector2 facingDirection = lastFacingDirection;   //already normalized
+            if(getInputMovementDirection() == Vector2.zero) //vector must be cardinalized if player is idle
+            {
+                facingDirection = cardinalizeVector(facingDirection);
+            }
 
-            Debug.DrawLine((Vector2)this.transform.position, (Vector2)this.transform.position + getInputMovementDirection(), Color.red, 1.0f);
-
-            RaycastHit2D interactRay = Physics2D.Raycast((Vector2)this.transform.position, getInputMovementDirection(), 1.0f);//change to arrow direction
+            // raycast in facing direction
+            Debug.DrawLine((Vector2)this.transform.position, (Vector2)this.transform.position + facingDirection, Color.red, 1.0f);
+            RaycastHit2D interactRay = Physics2D.Raycast((Vector2)this.transform.position, facingDirection, 1.0f);//change to arrow direction
 
             if(interactRay.collider != null)
             {
                 Debug.Log(interactRay.collider.ToString());
             }
+
         }
     }
 }
