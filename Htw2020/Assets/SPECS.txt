@@ -14,7 +14,6 @@ Ashley
 - Item manager/inventory (for info when interacted with)
 - Sprite Sorting (combine w/ above?)
 - Dialogue/story manager
-
 - // game design document
 
 Bharathi 
@@ -33,14 +32,13 @@ Kavi
      - maybe random generation if game design permits
 
 Keerthana
-- add whatever you want
+- Weapon
+- Menu and MainControl
 
 
 Other
 - Scorekeeper (use .xml, or JSON)
-- Menu and MainControl
 - Player
-- Weapon
 - // designing game map + rooms
 - other listed features
 
