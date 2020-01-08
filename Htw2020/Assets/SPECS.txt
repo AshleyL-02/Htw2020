@@ -23,6 +23,7 @@ Bharathi
 - HUD
      - mini map? 
      - screen transitions
+	 - inventory display
 
 Deepti
 - GameControl
@@ -128,6 +129,10 @@ GAME NARRATIVE (rough) ---------------------------------------------------------
 
 ART ------------------------------------------------------------------------------------------------------
 - 16x16 or 32x32 px?
+- prof. layton london life art
+
+temp:
+- https://opengameart.org/content/edited-and-extended-24x32-character-pack
 
 GAME CONTROLS --------------------------------------------------------------------------------------------
 
@@ -159,3 +164,8 @@ techniques ---------------------------------------------------------------------
 - State machine: use to 'plug in' different behaviors (e.g. equipping different weapons, enemy behavior) instead of using
 	case and switch or if/else statements
 
+
+
+project settings --------
+
+- set ray casts to not detect self collider (under project settings > physics 2d)

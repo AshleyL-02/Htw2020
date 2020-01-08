@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Fix movement/input lag 
+ * 
+ * 
+ * 
+ */
+
 public class PlayerUI : MonoBehaviour
 {
     //Static variables
@@ -12,7 +19,7 @@ public class PlayerUI : MonoBehaviour
     private Collider2D myCollider;
 
     //Movement/input-related fields (consider putting in player data class?)
-    private static readonly float SPEED = 3.8f;
+    private static readonly float SPEED = 2.3f;
     private static readonly float SPRINT_MULTIPLIER = 1.8f;
 
     private float speedMultiplier = SPEED;
@@ -58,6 +65,17 @@ public class PlayerUI : MonoBehaviour
         readMovementInput();
     }
 
+    //ACCESSORs
+    private Vector2 getPlayerDirection()    //normalized direction vector based on wasd input
+    {
+        Vector2 movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        movementDirection.Normalize();
+
+        return movementDirection;
+    }
+
+    //Mutators
+
 
     //PRIVATE METHODS
 
@@ -70,12 +88,12 @@ public class PlayerUI : MonoBehaviour
     }
     private void readMovementInput() //work on controls so the velocity is correct against walls
     {
-        Vector2 movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")); 
+        Vector2 movementDirection = getPlayerDirection();
         float movementSpeed = Mathf.Clamp(movementDirection.magnitude, 0.0f, 1.0f); //not sure how necessary this is for keyboard controls
-        movementDirection.Normalize();
 
         myRigidbody.velocity = movementDirection * movementSpeed * speedMultiplier;
     }
+    
     private void readSprintInput()
     {
         if (Input.GetButton("Sprint"))  //use event trigger. change it asap
@@ -94,20 +112,16 @@ public class PlayerUI : MonoBehaviour
         {
             // checking if theres something to interact with
 
-            //! raycast for a gameobject on x layer, with y type
-            RaycastHit2D[] results = new RaycastHit2D[2];
+            // raycast for a gameobject (//! add layer filter?)
 
-            Physics2D.Raycast((Vector2)this.transform.position, Vector2.up, new ContactFilter2D(), results, 1.0f);
-            //RaycastHit2D interactRay = Physics2D.Raycast((Vector2)this.transform.position, Vector2.up, 1.0f);//change to arrow direction
+            Debug.DrawLine((Vector2)this.transform.position, (Vector2)this.transform.position + getPlayerDirection(), Color.red, 1.0f);
 
-            foreach(RaycastHit2D rc in results)
+            RaycastHit2D interactRay = Physics2D.Raycast((Vector2)this.transform.position, getPlayerDirection(), 1.0f);//change to arrow direction
+
+            if(interactRay.collider != null)
             {
-                if(rc.collider != null)
-                {
-                    Debug.Log(rc.collider.ToString());
-                }
+                Debug.Log(interactRay.collider.ToString());
             }
-            
         }
     }
 }

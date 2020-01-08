@@ -11,7 +11,8 @@ public class InteractReceiver_temp : MonoBehaviour
     {
         //add oninteractaddtoinventory to list of subscribed methods when event is triggered
         GameEvents_temp.current.onInteractTrigger += OnInteractAddToInventory;
-        Debug.Log("Subscribed the method");
+
+        //Debug.Log("Subscribed the method");
        
     }
 
