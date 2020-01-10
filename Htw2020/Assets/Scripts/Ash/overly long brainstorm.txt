@@ -1,6 +1,7 @@
 
 
 
+GAMEPLAY IDEAS -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 - elements of combat that are fun: dodging. tactical shots (like headshots)
 
 
@@ -27,9 +28,11 @@
 		- talking to Pager kid
 		- meditating (possibly with pager kid)
 		-? naturally regenerates
-		- doesn't regenerate, but the drop speed can be reduced
+		- doesn't regenerate, but the loss of sanity can be slowed (like with pills)
 - health system:
-	-? aforementioned "invincible mc". 
+	-? aforementioned "invincible mc"
+	-? health bar
+	-? player just says how they're feeling (e.g. not good. super not good. really really bad. 11/10)
 
 - type of infection the zombies have. Why are the zombies violent (if they are)?
 	-? parasite. Zombies need to consume human meat to feed the host and spread parasite babies
@@ -42,12 +45,10 @@
 
 - how do you kill zombies
 
-- how did the outbreak happen
+
 - some rooms are dark, mc has to navigate room in pitch-black darkness
 - is sound going to be a factor
 	- if player makes too much sound, more zombies come rushing
-
-- can player have option to not use zombie arm and just use a crowbar or something? I don't like this idea
 
 - zombie arms
 	-? Strong arm: press L mouse to swipe at zombies and R mouse to grab a zombie and crush their neck. You can use the grab function to push objects, maybe in front of doors
@@ -58,3 +59,21 @@
 - hospital design
 	-? player can see into adjacent room?
 	-? most doors have been broken down? or are zombies compartmentalized bc they're trapped
+
+
+
+STORY IDEAS -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+- introduction: 
+	- option: player goes to hospital to get a brain scan. 
+		- mc's doctor is the first zombie player encounters (creating moral tension -> develop later)
+		- mc is forced to beat zombie down, cut off arm, and sew it on, otherwise they can't escape the room
+			- maybe they need to use the strong arm to move wreckage near an exit door
+	- option: pager kid tells mc that they were in a coma (but somehow the virus woke mc up)
+
+- what's the pager kid's deal:	
+	- why are they at the hospital
+
+- how did the outbreak happen
+
+
