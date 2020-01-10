@@ -1,6 +1,7 @@
 Game Specifications document
 
 Using Unity version 2018.3.11f1
+Game view should be set to 16:9, not free aspect
 
 Beginner guide to Unity: https://www.freecodecamp.org/news/the-ultimate-beginners-guide-to-game-development-in-unity-f9bfe972c2b5/
 
@@ -26,10 +27,13 @@ Bharathi
 
 Deepti
 - GameControl
+- // designing hospital floor map
 
 Kavi
 - Navigation
-     - maybe random generation if game design permits
+     - navigation requirements: 
+			some way to keep track of each room's name (e.g. room 25, hallway 1, closet 1). Maybe a room class?
+			a way to black out rooms that have a door blocking them (ie adjacent rooms).
 
 Keerthana
 - Weapon
@@ -38,7 +42,7 @@ Keerthana
 
 Other
 - Scorekeeper (use .xml, or JSON)
-- Player
+- Camera
 - // designing game map + rooms
 - other listed features
 
@@ -49,6 +53,7 @@ GAME BRAINSTORM  ---------------------------------------------------------------
 
 - Game takes place in a hospital where a zombie outbreak has occurred (maybe by some noxious gas in the air system).
 - Player must escape hospital and avoid or fight zombies
+- zombies do not respawn. Changes made to rooms (like blood!) are permanent
 - 2.5D (pokemon/rpg-style) game view
 - Aspect Ratio: 16:9
 
@@ -65,7 +70,7 @@ GAME BRAINSTORM  ---------------------------------------------------------------
 	- Player-based navi elements: (player will probably code these)
 		- doors (press E down and up to enter)
 	***** IMPORTANT ***	Each door contains info (a string name?) on the room it leads to. (to keep track of player location)
-		- camera follows character (like Earthbound) so character is fixed at center of screen. 
+		- camera follows character? (like Earthbound) so character is fixed at center of screen. 
 			
 	> navigation code flow: player presses 'e' down and up in door zone -> player lets GameControl know a 
 		door wants to be opened -> GameControl tells NaviUI Monobehaviour to load intended room (+ HUD fade?) 
@@ -112,7 +117,9 @@ Possible features:
 	- rpg thing where interacting with items gives you a description of them
 		- collect items to solve puzzles? -> need an inventory system. gross.
 			- solve puzzles with the help of Pager kid?
-			
+
+- Projectiles and furniture that blocks projectiles (dodging)
+
 - minimap of hospital
 - save files
 - add shadows to characters

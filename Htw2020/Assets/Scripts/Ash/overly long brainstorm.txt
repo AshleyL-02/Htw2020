@@ -1,0 +1,60 @@
+
+
+
+- elements of combat that are fun: dodging. tactical shots (like headshots)
+
+
+
+- if the game involves swarms of zombie, navigation needs to be zoomed-out and more open (like long hallways) -> thus camera needs to be more dynamic?
+	- camera can be fixed if fighting is more sparse -> the entire room can fit on one screen because player isn't moving as much
+
+- option: player is half-zombie so they're invincible
+	- they don't have health. Any status afflictions are just nuisances (like reduced speed, limping, blurry/obstructed/flashing screen, blackouts, double vision, blood dropping everywhere)
+			- They can reduce the status afflictions by using items (painkillers, bandages...) until they turn into a drugged-up mummy
+			- they can become a killing machine ooo
+	- sanity?
+	- interesting dynamic with pager kid, who wants the player to save them (encourages player to be violent) but not turn so violent that the pager kid is in jeopardy
+	- if player is invincible, how do you kill zombies? fire? Do you just dismember them until they stop moving? Eat them?
+	
+- sanity system
+	- player may choose to draw out zombies to an area so they can get them all at once
+	- does sanity reset itself each time the player removes the arm?
+	- Consequences of low sanity:
+	- consequence of sanity falling to zero:
+		-? no consequence. just a lot of status afflictions
+		-? game over because player turns into a zombie
+	- sanity regeneration:
+		- talking to Pager kid
+		- meditating (possibly with pager kid)
+		-? naturally regenerates
+		- doesn't regenerate, but the drop speed can be reduced
+- health system:
+	-? aforementioned "invincible mc". 
+
+- type of infection the zombies have. Why are the zombies violent (if they are)?
+	-? parasite. Zombies need to consume human meat to feed the host and spread parasite babies
+		- mc has a parasite lodged in their arm
+	-? airborne virus that makes people super violent
+		- mc and pager kid have to wear gas masks
+	- the affliction mutates unpredictably when victim has existing health issue (e.g. a burn victim becomes a flame zombie) --> boss zombies are just zombies with mutations
+		- mc had a tumor that prevented the virus from taking full effect -> still sane, but with sick zombie powers
+			- mc had brain tumor that prevented affliction from latching on?
+
+- how do you kill zombies
+
+- how did the outbreak happen
+- some rooms are dark, mc has to navigate room in pitch-black darkness
+- is sound going to be a factor
+	- if player makes too much sound, more zombies come rushing
+
+- can player have option to not use zombie arm and just use a crowbar or something? I don't like this idea
+
+- zombie arms
+	-? Strong arm: press L mouse to swipe at zombies and R mouse to grab a zombie and crush their neck. You can use the grab function to push objects, maybe in front of doors
+		- items can't be rotated -> weird mechanic. Not very elegant in 2d
+	-? paint arm
+	-? flame arm. Allows mc to actually kill zombies. Also use as torch in Wumpus room or rooms without electricity
+
+- hospital design
+	-? player can see into adjacent room?
+	-? most doors have been broken down? or are zombies compartmentalized bc they're trapped
