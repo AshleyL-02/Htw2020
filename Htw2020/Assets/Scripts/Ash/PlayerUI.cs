@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * 
- * "cardinalizing" movement direction will be unnecessary if sprite can face 8 directions
+ * "cardinalizing" movement direction will be unnecessary if sprite (art) can face 8 directions
  * 
  * 
  */
@@ -13,13 +13,17 @@ using UnityEngine;
 
 public class PlayerUI : MonoBehaviour
 {
-    //Static variables
+    //Static fields
     private static readonly Vector2 START_COOR = new Vector2(0.0f, -1.0f);
+
+    //?
+    
 
     //References
     private Rigidbody2D myRigidbody;
     private Collider2D myCollider;
     private Animator myAnimator;
+    private ProjectileInstantiator myPI;
 
     //Movement/input-related fields (consider putting in player data class?)
     private static readonly float SPEED = 1.8f;
@@ -34,6 +38,7 @@ public class PlayerUI : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<Collider2D>();
         myAnimator = GetComponent<Animator>();
+        myPI = GetComponent<ProjectileInstantiator>();
     }
 
     
@@ -126,6 +131,8 @@ public class PlayerUI : MonoBehaviour
     {
         readSprintInput();
         readSelectInput();
+
+
     }
     private void readMovementInput() //work on controls so the velocity is correct against walls
     {
