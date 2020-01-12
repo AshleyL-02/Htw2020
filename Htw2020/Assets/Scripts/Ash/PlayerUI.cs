@@ -39,6 +39,10 @@ public class PlayerUI : MonoBehaviour
         myCollider = GetComponent<Collider2D>();
         myAnimator = GetComponent<Animator>();
         myPI = GetComponent<ProjectileInstantiator>();
+
+        //adding components
+        //myPI = this.gameObject.AddComponent<ProjectileInstantiator>();
+        //this.gameObject.AddComponent<Object>();
     }
 
     
@@ -132,7 +136,7 @@ public class PlayerUI : MonoBehaviour
         readSprintInput();
         readSelectInput();
 
-
+        readShootInput();
     }
     private void readMovementInput() //work on controls so the velocity is correct against walls
     {
@@ -181,5 +185,15 @@ public class PlayerUI : MonoBehaviour
                 Debug.Log(interactRay.collider.ToString());
             }
         }
+    }
+
+    private void readShootInput()
+    {
+        //! TEMPORARY
+        if (Input.GetButtonDown("AttackTemp"))
+        {
+            myPI.shootProjectile(lastFacingDirection, this.transform.position, 0.5f, 5.0f);
+        }
+        
     }
 }

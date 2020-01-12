@@ -47,7 +47,8 @@ public class ProjectileInstantiator : MonoBehaviour
     public void shootProjectile(Vector2 targetDirection, Vector2 currentPosition, float radiusFromTarget, float projectileSpeed)
     {
         //adds to sprite sorter? y or nay
-        GameObject projectile = Instantiate(myProjectilePrefab, getProjectileStartingPosition(targetDirection, currentPosition, radiusFromTarget), getNewProjectileRotation(targetDirection, currentPosition));
+        GameObject projectile = Instantiate(myProjectilePrefab, getProjectileStartingPosition(targetDirection, currentPosition, radiusFromTarget), new Quaternion(0f,0f,0f,0f));
+        // method for getting rotation: getNewProjectileRotation(targetDirection, currentPosition)
         projectile.GetComponent<Rigidbody2D>().velocity = getNewProjectileVelocity(targetDirection, projectileSpeed);
     }
 
@@ -65,7 +66,7 @@ public class ProjectileInstantiator : MonoBehaviour
         {
             degrees += 180;
         }
-        return Quaternion.Euler(0, 0, degrees);
+        return Quaternion.Euler(0, 0, degrees - 180f);
     }
     private Vector2 getNewProjectileVelocity(Vector2 targetDirection, float projectileSpeed)
     {
