@@ -12,6 +12,7 @@ using UnityEngine;
  * 
  * create InteractableObject class?
  * can player duck/sit to dodge projectiles?
+ * consider setting tag to "Object" for easier detection (instead of using getComponent)
  * 
  */
 

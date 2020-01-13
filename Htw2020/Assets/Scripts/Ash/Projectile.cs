@@ -6,6 +6,7 @@ using UnityEngine;
  * 
  * projectile collider goes where its SHADOW is
  * 
+ * Physics.IgnoreCollision? 
  * projectile is destroyed upon a hit
  * 
  * animate destroy
@@ -18,7 +19,7 @@ public class Projectile : MonoBehaviour
     private GameObject myProjectile;
 
     //fields
-    private float height = 1.5f; //default height?
+    private float height = 1.3f; //default height?
 
     private void Awake()
     {
