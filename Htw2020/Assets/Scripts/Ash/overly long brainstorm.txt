@@ -53,14 +53,16 @@ GAMEPLAY IDEAS -----------------------------------------------------------------
 - zombie arms
 	-? Strong arm: press L mouse to swipe at zombies and R mouse to grab a zombie and crush their neck. You can use the grab function to push objects, maybe in front of doors
 		- items can't be rotated -> weird mechanic. Not very elegant in 2d
+		- allows you to pick up and transport heavy objects, like a chair or another person
 	-? paint arm
 	-? flame arm. Allows mc to actually kill zombies. Also use as torch in Wumpus room or rooms without electricity
+		- combine with alcohol/hand sanitizer to set things on fire?
 
 - hospital design
 	-? player can see into adjacent room?
 	-? most doors have been broken down? or are zombies compartmentalized bc they're trapped
 
-
+- when you drop items, they just end up on the ground w/ their sprite
 
 STORY IDEAS -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -47,7 +47,6 @@ public class Projectile : MonoBehaviour
             if(height < other.getHeight())
             {
                 destroyProjectile();
-                Debug.Log("hit an object that was too tall");
             }
         }
         else

@@ -9,11 +9,11 @@ CLASSES ------------------------------------------------------------------------
 
 Alex
 - Enemy
+	- enemy "ai": pathfinding, attack/find cover
 - Wumpus
 
 Ashley
 - Item manager/inventory (for info when interacted with)
-- Sprite Sorting (combine w/ above?)
 - Dialogue/story manager
 - // game design document
 
@@ -28,6 +28,7 @@ Bharathi
 Deepti
 - GameControl
 - // designing hospital floor map
+- choose an additional thing
 
 Kavi
 - Navigation
@@ -58,9 +59,9 @@ GAME BRAINSTORM  ---------------------------------------------------------------
 - Aspect Ratio: 16:9
 
 - Navigation:
-	- figure out some environment display system
-		- probably tilemap-based map
-	- walls have continuous colliders
+	- tilemap-based map
+	- save levels in .xml instead of in scenes (load from .xml)
+	- floor edges have continuous colliders (using tilemap composite collider)
 	- system of classifying different rooms
 		- system of keeping track of room contents (e.g. room 3h has 3 red zombies and 2 children)
 	- method to load a new specific room (given a parameter)
@@ -85,6 +86,7 @@ Possible features:
 		zombies. 
 - enemy system
 	- zombie swarms, or specialized zombie bosses, or both? What kind of enemy distribution do we want
+	- zombie pathfinding. Zombies also find cover (like fps people)
 	
 - Wumpus: wanders around rooms
 	- The mega zombie. Idk about backstory but its pretty gnarly
@@ -117,6 +119,9 @@ Possible features:
 	- rpg thing where interacting with items gives you a description of them
 		- collect items to solve puzzles? -> need an inventory system. gross.
 			- solve puzzles with the help of Pager kid?
+	- Inventory item options: Use, Drop, [Give, Examine]
+		-  USE: (either 1-use or equip). Can use (equip) hand sanitizer, zombie arm, etc. Can use bandage?
+	-? hovering over item shows its sprite and description on the left?
 
 - Projectiles and furniture that blocks projectiles (dodging)
 
@@ -172,6 +177,6 @@ techniques ---------------------------------------------------------------------
 
 
 
-project settings --------
+project setting changes that were made --------
 
-- set ray casts to not detect self collider (under project settings > physics 2d)
+- set the ray casts to not detect self colliders, (under project settings > physics 2d)
