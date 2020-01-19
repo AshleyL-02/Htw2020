@@ -13,7 +13,7 @@ public class PondRipplePS : MonoBehaviour
     private bool inRange = false;
 
     //references
-    public Rigidbody2D playerRB;
+    private Rigidbody2D playerRB;
     private ParticleSystem myParticleSystem;
 
     private bool wasStopped = false;
