@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1297848112973730105}
   - component: {fileID: 1297848112973730087}
   - component: {fileID: 1297848112973730086}
-  - component: {fileID: 4139355971911058538}
   m_Layer: 8
   m_Name: Pond_baked_sprite_particle_system
   m_TagString: Untagged
@@ -4757,17 +4756,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &4139355971911058538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1297848112973730104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33291de8ace607d4abe35e7de4d4cb55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRB: {fileID: 0}
-  myParticleSystem: {fileID: 1297848112973730087}

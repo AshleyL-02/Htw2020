@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4401440358808391333}
   - component: {fileID: 4401440358808391335}
   - component: {fileID: 4401440358808391332}
-  - component: {fileID: 863065099}
   m_Layer: 8
   m_Name: Pond_physics_particle_system
   m_TagString: Untagged
@@ -4757,17 +4756,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &863065099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4401440358808391330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33291de8ace607d4abe35e7de4d4cb55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerRB: {fileID: 0}
-  myParticleSystem: {fileID: 4401440358808391335}
