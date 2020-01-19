@@ -14,7 +14,7 @@ using UnityEngine;
 public class PlayerUI : MonoBehaviour
 {
     //Static fields
-    private static readonly Vector2 START_COOR = new Vector2(0.0f, -1.0f);
+    private static readonly Vector2 START_COOR = new Vector2(0.0f, 1.0f);
 
     //?
     
