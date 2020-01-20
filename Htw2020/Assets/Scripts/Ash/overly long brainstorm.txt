@@ -34,6 +34,11 @@ GAMEPLAY IDEAS -----------------------------------------------------------------
 	-? health bar
 	-? player just says how they're feeling (e.g. not good. super not good. really really bad. 11/10)
 
+- pager system:
+	- kid asks you to spell your name in morse code by squatting dots and dashes
+	- If you leave the room before answering kid's question, the kid answers the question for you
+	
+
 - type of infection the zombies have. Why are the zombies violent (if they are)?
 	-? parasite. Zombies need to consume human meat to feed the host and spread parasite babies
 		- mc has a parasite lodged in their arm
@@ -78,5 +83,14 @@ STORY IDEAS --------------------------------------------------------------------
 	-? super morally ambiguous. Doesn't care what MC does as long as MC helps them get out of the hospital. Very politically-correct
 
 - how did the outbreak happen
+
+THEMES
+
+- non-verbal communication w/ pager kid
+- object permanence and tangibility
+	- dodging/cover behind objects
+	- things that you drop stay there
+	- enemy corpses stay there when they die. alive enemies have some location permanence
+	- things you spill on the ground stay there
 
 

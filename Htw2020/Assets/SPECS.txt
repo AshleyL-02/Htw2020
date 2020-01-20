@@ -42,7 +42,6 @@ Keerthana
 
 
 Other
-- Scorekeeper (use .xml, or JSON)
 - Camera
 - // designing game map + rooms
 - other listed features
@@ -86,7 +85,7 @@ Possible features:
 		zombies. 
 - enemy system
 	- zombie swarms, or specialized zombie bosses, or both? What kind of enemy distribution do we want
-	- zombie pathfinding. Zombies also find cover (like fps people)
+	- zombie pathfinding. Zombies also find cover behind things (like fps people)
 	
 - Wumpus: wanders around rooms
 	- The mega zombie. Idk about backstory but its pretty gnarly
@@ -130,7 +129,7 @@ Possible features:
 - add shadows to characters
 	
 
-GAME NARRATIVE (rough) -----------------------------------------------------------------------------------
+GAME NARRATIVE (subject to change) -----------------------------------------------------------------------------------
 - phase 0: mc wakes up to hear a beeping pager. They're stuck in a room with a bleeding arm (their arm)
 	- find tourniquet
 	- escape room
@@ -144,19 +143,23 @@ ART ----------------------------------------------------------------------------
 
 temp:
 - https://opengameart.org/content/edited-and-extended-24x32-character-pack
+- http://pixeljoint.com/pixelart/85212.htm
 
 GAME CONTROLS --------------------------------------------------------------------------------------------
 
-what ever
+Arrow keys?
+Space: Shoot
+Shift: Sprint
+E: interact
 
 tips :p  ---------------------------------------------------------------------------
 https://www.gamasutra.com/blogs/HermanTulleken/20160812/279100/50_Tips_and_Best_Practices_for_Unity_2016_Edition.php (reaadd me)
 
-	-  push and pull often to avoid merge conflicts (at least once an hour)
+	-  push and pull often to avoid merge conflicts
 	-  keep the Update method as sparse as possible (it should only call methods; no logic).
-	-  Use as many classes as needed to avoid clutter
+	-  Classes should mostly be <200-300 lines (use your judgement)
 	-  Create a prefab for every in-game object you make, in case it accidentally gets deleted. Remember to update the prefab as well
-	-  We can't use System.Out.whatever so use Debug.Log("whatever") for debugging. This only works in MonoBehaviours though
+	-  Use Debug.Log("your debug message") for debugging. This only works in MonoBehaviours though
 	-  Delete the " : Monobehaviour " line from your script unless you actually need it to be a Monobehaviour
 
 	-  Regardless of how many times you use the value, any specific number should be set to a private static readonly (final) variable. This also makes it easier to change the values later.
@@ -165,14 +168,15 @@ https://www.gamasutra.com/blogs/HermanTulleken/20160812/279100/50_Tips_and_Best_
 	-  Renaming things in your code: don’t just delete the text and retype it. Right-click the method, variable, file, etc. you want to rename and press “rename”—this lets you rename all instances of the name at once.
 		-  in Unity, you have to rename C# scripts twice: first, go to Unity right-click the script you want to rename and press “rename” (to rename the file name).
 		-  Then, open the script and right-click its name to rename (rename the class’s name). Class and file names have to match.
-	- set sprite pivot points to the bottom center of sprites, not the middle
+	- set sprite pivot points to the bottom center when importing art
 	
 techniques ----------------------------------------------------------------------------------------------------
 
+- .xml Serialization
 - Coroutines: use for actions that occur over time (like transitions)
-- Event system: use to listen for a certain trigger (e.g. door opening)
+- Delegates/ Event system: use to listen for a certain trigger (e.g. door opening)
 	https://www.youtube.com/watch?v=gx0Lt4tCDE0
-- State machine: use to 'plug in' different behaviors (e.g. equipping different weapons, enemy behavior) instead of using
+- State machine (e.g. with interface array): use to 'plug in' different behaviors (e.g. equipping different weapons, enemy behavior) instead of using
 	case and switch or if/else statements
 
 
@@ -180,3 +184,4 @@ techniques ---------------------------------------------------------------------
 project setting changes that were made --------
 
 - set the ray casts to not detect self colliders, (under project settings > physics 2d)
+- Pond layer won't collide with default
