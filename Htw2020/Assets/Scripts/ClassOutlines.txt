@@ -1,0 +1,131 @@
+
+[ClassName] (MB) (labeled as MB if it's a monobehaviour)
+	// comment
+	> global variable
+	+ methodName()
+	[SubClass Name]
+
+
+.. ask bharathi to design wumpus battle
+.. working game by may 1, features "implemented" march 15th?
+
+Alex: Zombie, Idestructable
+Keerthana: Arm
+
+
+________________________ ENEMY AND WEAPON _____________________________________________________________________________________________________
+
+Enumeration: ZombieType {NORMAL, CHILD, CRAWLER, SLICER, WHATEVER}	//enum for zombie types, which correspond to arm types
+
+[IDestructable]	//this is an INTERFACE! IDestructable is inherited by Player and Zombie
+	> float baseHealth	
+	> float currHealth
+
+	+ public takeDamage(float damageAmount)
+	+ die()
+
+[Zombie] (MB) : IDestructable
+	// class defines a "normal zombie"
+	// zombie behavior can run on a state machine based on conditions like proximity to player or health 
+	// I have this idea that zombies mutated based their condition as a human (e.g. person with a cold becomes an ice zombie; nurses, children, etc.). idk if this helps with creativity
+	
+	> protected readonly ZombieType myType = relevant enum type;
+	> protected static readonly variables for: base health, base speed, etc.
+	> currentHealth
+	> protected Arm myArm;	//this is the weapon the zombie will use. e.g. call myArm.setIsAttacking(true). get Arm object using this.getComponentInChild<Arm>();
+	> Vector3 or enum (whichever you want, coordinate w/ arm class) currentFacingDirection	//current direction zombie is facing (see Player class code for example)
+
+	+ setWake()	//called when player enters room, may include setting Zombie state to "attack" or "search"
+	+ setSleep()	//called when player leaves room
+	+ die()
+
+*	[ChildZombie] : Zombie	//example subclass
+
+	> ZombieType myType = ZombieType.CHILD;
+	> private ChildArm myArm = new ChildArm();
+
+	+ @Override methods for whatever behaviors are different from base class
+
+
+[Arm] (MB)
+	//used by zombie and player. Attacking probably involves coroutines due to cooldown times
+	// each attack determines if it hit something IDestructable (via arm collider's onTriggerEnter?), then calls takeDamage()
+
+	> private bool isAttacking 	//true if arm is currently trying to attack
+	> vector3 or enum currentAttackDirection
+
+	+ private performAttack()	//performs single attack, called by Arm class
+	+ public startAttacking(int numberOfAttacks)	// calls performAttack() to perform a certain number of attacks
+	+ public startAttacking()	//like previous, but keeps on attacking indefinitely
+	+ public stopAttacking()	//stops attacking
+
+*	[child class based on enum types]
+
+
+
+________________________ MENU, MAINCONTROL, CONTROLLERMANAGER _________________________________________________________________________________________
+
+[] menu stuff
+
+[] controller manager
+
+________________________ LEVELS AND NAVIGATION, INVENTORY, ITEM INTERACTIONS __________________________________________________________________________
+[RoomSerializer]
+	//serializes and deserializes rooms from a .xml file. Files are named floor1.xml, floor2.xml, etc. Each floor contains the rooms for the floor
+	
+	+ List<Rooms> deserializeRooms(string fileName) //returns a list of rooms
+	+ serializeRooms(string fileName, List<Room> myRooms)	//serializes a list of rooms for floor of name fileName
+
+	+ static void serializeDoor()
+	+ static void serializeObject()
+	+ etc.
+
+[Room]
+	//contains info about a room, including door location and rooms connecting
+	// point (0,0) is located at doorEntry's position, and everything inside the room is located relative to doorEntry
+
+	> Door doorEntry 	//the door that is the entrance to a room. There can only be one per room, for now
+	> Door doorExit		//the door(s) that leads to another branch in the map (e.g. Hallway ExitDoor -> Infirmary EnterDoor ~> Infirmary ExitDoor -> Closet Enter Door)
+
+	+ static void buildRoom(Vector3 startingPosition)	// builds room in game space from given starting position
+	
+*	[HallwayRoom, ExamRoom, Closet, Aorta, Bathroom, Elevator]	//subtypes of rooms that affect how the map is generated. There should only be a few subtypes 
+*	[any special rooms that need to be at a specific location may have their own class]
+	
+[Door]
+	> Vector3 doorLocation
+	> string leadsTo	//string name of the room the door leads to?
+
+	
+
+[CameraController]
+	//controls camera movement based on map and player movement
+
+
+________________________ LEVEL SERIALIZATION AND SAVING _______________________________________________________________________________________________
+
+
+
+________________________ HUD __________________________________________________________________________________________________________________________
+
+[] HUD
+
+
+________________________ STORYMANAGER, PAGER __________________________________________________________________________________________________________
+
+[] pager stuff
+
+[] story tokens
+
+
+________________________ PLAYER
+
+
+
+
+
+
+
+
+
+
