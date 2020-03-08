@@ -69,7 +69,7 @@ ________________________ MENU, MAINCONTROL, CONTROLLERMANAGER __________________
 
 [] controller manager
 
-________________________ LEVELS AND NAVIGATION, INVENTORY, ITEM INTERACTIONS __________________________________________________________________________
+________________________ -unfinished- LEVELS AND NAVIGATION, INVENTORY, ITEM INTERACTIONS __________________________________________________________________________
 [RoomSerializer]
 	//serializes and deserializes rooms from a .xml file. Files are named floor1.xml, floor2.xml, etc. Each floor contains the rooms for the floor
 	
@@ -92,7 +92,7 @@ ________________________ LEVELS AND NAVIGATION, INVENTORY, ITEM INTERACTIONS ___
 *	[HallwayRoom, ExamRoom, Closet, Aorta, Bathroom, Elevator]	//subtypes of rooms that affect how the map is generated. There should only be a few subtypes 
 *	[any special rooms that need to be at a specific location may have their own class]
 	
-[Door]
+[Door] (MB?)
 	> Vector3 doorLocation
 	> string leadsTo	//string name of the room the door leads to?
 
@@ -108,7 +108,35 @@ ________________________ LEVEL SERIALIZATION AND SAVING ________________________
 
 ________________________ HUD __________________________________________________________________________________________________________________________
 
-[] HUD
+[PagerHUD] (MB)
+	// displays hud; may be a static (unique) class
+	// pager controls: p to open, { } to scroll through a message
+
+	> private bool isPagerShowing	//true if pager is being displayed
+
+	> private PagerMessage currMessage	//current message
+	> private int pagerMessageIndex	//index of message
+
+	+ showPager()	//displays pager, which is at the lower right corner of the screen, updates field
+	+ hidePager()	//hides pager, updates field isPAgerShowing
+	+ showNextMessageText()	//shows text at pagerMessageIndex +1
+	+ showPreviousMessageText()	//shows text at pagerMessageIndex -1
+
+	+ updatePagerMessage(PagerMessage message)	//calls updates currMessage field and updates pager display
+		//a sound plays when a message is updated. controlled by sound manager?
+
+[PagerMessage]
+	> private static readonly int PAGER_MESSAGE_WIDTH // max character width of pager message
+	> private static readonly int PAGER_MESSAGE_HEIGHT // max character height of pager message
+
+	> private 
+
+	+ static formatMessage(string message)
+
+	+ string getMessageAtIndex(int index)	//returns string at index
+
+	+ int getPagerMessageLength()	//returns length of message array
+
 
 
 ________________________ STORYMANAGER, PAGER __________________________________________________________________________________________________________
@@ -119,6 +147,11 @@ ________________________ STORYMANAGER, PAGER ___________________________________
 
 
 ________________________ PLAYER
+
+[] player
+
+_________________________ CONTROLLER ______________________________________
+
 
 
 
