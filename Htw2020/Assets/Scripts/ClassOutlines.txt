@@ -11,6 +11,8 @@
 
 Alex: Zombie, Idestructable
 Keerthana: Arm
+Bharathi: (HUD)-- PagerHUD, PagerMessage
+Kavi: "Navigation" stuff
 
 
 ________________________ ENEMY AND WEAPON _____________________________________________________________________________________________________
@@ -67,9 +69,97 @@ ________________________ MENU, MAINCONTROL, CONTROLLERMANAGER __________________
 
 [] menu stuff
 
-[] controller manager
+_________________________ CONTROLLER ______________________________________
 
-________________________ -unfinished- LEVELS AND NAVIGATION, INVENTORY, ITEM INTERACTIONS __________________________________________________________________________
+// pager controls: p to open, { } to scroll through a message
+
+
+
+________________________ NAVIGATION ______________________________________
+Needed information:
+	// rooms are labeled with unique names, possibly based on floor and room type
+	// the rooms can all be rectangles if you want
+	// need some way of returning the floormap (e.g. array with 0 for not floor, 1 for floor) of a room. If it's a rectangle, then just returns dimensions, like (4,5)
+		//also indicate door position on floormap
+
+	> public Vector2 getRoomWorldPosition() //returns Vector2 position for lower-rightmost corner of room
+
+	> public Vector2 enterDoor(something)	//returns Vector2 for new player position, makes game data and in-game display reflect a room change
+		// player can only see the room they're in
+
+
+________________________ LEVEL SERIALIZATION AND SAVING _______________________________________________________________________________________________
+
+
+________________________ OBJECT, OBJECT MANAGER, INVENTORY, ITEM INTERACTIONS ________________________________________________________________
+
+________________________ HUD __________________________________________________________________________________________________________________________
+
+[PagerHUD] (MB)
+	// displays hud; may be a static (unique) class
+	// pager controls: p to open, { } to scroll through a message
+
+	> private bool isPagerShowing	//true if pager is being displayed
+
+	> private PagerMessage currMessage	//current message
+	> private int pagerMessageIndex	//index of message
+
+	+ showPager()	//displays and updates pager, which is at the lower right corner of the screen, updates isPagerShowing
+	+ hidePager()	//hides pager, updates field isPagerShowing
+	+ showNextMessageText()	//shows text at pagerMessageIndex +1
+	+ showCurrMessageText() //shows text at pagerMessageIndex; called during showPager()?
+	+ showPreviousMessageText()	//shows text at pagerMessageIndex -1
+
+	+ updatePagerMessage(PagerMessage message)	// updates currMessage field and sets pagerMessageIndex to 0
+		//a sound plays when a message is updated. controlled by sound manager?
+
+[PagerMessage]
+	> private static readonly int MAX_SEGMENT_CHAR_LENGTH //max number of chars in a segment
+
+	> private string[] segmentedMessage	//formatted message
+
+	+ setSegmentedMessage(string message)	//calls formatter and sets field
+	+ string[] formatToSegmentedMessage(string message)	//formats to string[]
+
+	+ string getTextAtIndex(int index)	//returns string at index
+
+	+ int getSegmentedMessageLength()	//returns length of message array
+
+
+
+________________________ STORYMANAGER, PAGER __________________________________________________________________________________________________________
+
+[] pager stuff, dialogue branches
+
+[] story tokens
+
+
+________________________ PLAYER _________________________________________________________________________
+
+[] player
+
+________________________ GAMECONTROL ________________________________________________________________________________________________
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ***************************** SCRAPPED FOR NOW : 
+
+ ________________________ -unfinished- LEVELS AND NAVIGATION, INVENTORY, ITEM INTERACTIONS __________________________________________________________________________
 [RoomSerializer]
 	//serializes and deserializes rooms from a .xml file. Files are named floor1.xml, floor2.xml, etc. Each floor contains the rooms for the floor
 	
@@ -100,65 +190,5 @@ ________________________ -unfinished- LEVELS AND NAVIGATION, INVENTORY, ITEM INT
 
 [CameraController]
 	//controls camera movement based on map and player movement
-
-
-________________________ LEVEL SERIALIZATION AND SAVING _______________________________________________________________________________________________
-
-
-
-________________________ HUD __________________________________________________________________________________________________________________________
-
-[PagerHUD] (MB)
-	// displays hud; may be a static (unique) class
-	// pager controls: p to open, { } to scroll through a message
-
-	> private bool isPagerShowing	//true if pager is being displayed
-
-	> private PagerMessage currMessage	//current message
-	> private int pagerMessageIndex	//index of message
-
-	+ showPager()	//displays pager, which is at the lower right corner of the screen, updates field
-	+ hidePager()	//hides pager, updates field isPAgerShowing
-	+ showNextMessageText()	//shows text at pagerMessageIndex +1
-	+ showPreviousMessageText()	//shows text at pagerMessageIndex -1
-
-	+ updatePagerMessage(PagerMessage message)	//calls updates currMessage field and updates pager display
-		//a sound plays when a message is updated. controlled by sound manager?
-
-[PagerMessage]
-	> private static readonly int PAGER_MESSAGE_WIDTH // max character width of pager message
-	> private static readonly int PAGER_MESSAGE_HEIGHT // max character height of pager message
-
-	> private 
-
-	+ static formatMessage(string message)
-
-	+ string getMessageAtIndex(int index)	//returns string at index
-
-	+ int getPagerMessageLength()	//returns length of message array
-
-
-
-________________________ STORYMANAGER, PAGER __________________________________________________________________________________________________________
-
-[] pager stuff
-
-[] story tokens
-
-
-________________________ PLAYER
-
-[] player
-
-_________________________ CONTROLLER ______________________________________
-
-
-
-
-
-
-
-
-
 
 
