@@ -79,13 +79,20 @@ ________________________ NAVIGATION ______________________________________
 Needed information:
 	// rooms are labeled with unique names, possibly based on floor and room type
 	// the rooms can all be rectangles if you want
-	// need some way of returning the floormap (e.g. array with 0 for not floor, 1 for floor) of a room. If it's a rectangle, then just returns dimensions, like (4,5)
+	// need some way of returning the floormap (e.g. array with 0 for not floor, 1 for floor)  of a room. If it's a rectangle, then just returns dimensions, like (4,5)
 		//also indicate door position on floormap
 
-	> public Vector2 getRoomWorldPosition() //returns Vector2 position for lower-rightmost corner of room
+	// ingame display of floor involves a tilemap with a continuous collider; player spawns inside the collider
+
+	> public Vector2 getRoomWorldPosition() //returns Vector2 position for lower-leftmost corner of room
 
 	> public Vector2 enterDoor(something)	//returns Vector2 for new player position, makes game data and in-game display reflect a room change
 		// player can only see the room they're in
+
+	- for now, camera will be attached as a child GameObject of player object (so camera moves with player)
+
+	navigation ingame examples
+		- undertale ig
 
 
 ________________________ LEVEL SERIALIZATION AND SAVING _______________________________________________________________________________________________
@@ -127,11 +134,22 @@ ________________________ HUD ___________________________________________________
 
 
 
-________________________ STORYMANAGER, PAGER __________________________________________________________________________________________________________
+________________________ STORYMANAGER, ________________________________________________________________________________________________
+
+[] story tokens
+[StoryManager]
+	
+
+
+
+
+
+	- permanent and temporary story tokens
+_________________________ PAGER __________________________________________________________________________________________________________
 
 [] pager stuff, dialogue branches
 
-[] story tokens
+
 
 
 ________________________ PLAYER _________________________________________________________________________

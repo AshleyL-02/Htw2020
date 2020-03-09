@@ -49,7 +49,7 @@ public class PlayerUI : MonoBehaviour
     void Start()
     {
         //t temp 1
-        this.transform.position = START_COOR;
+        //this.transform.position = START_COOR;
         //t temp 1
 
     }
