@@ -10,7 +10,7 @@ public class RoomInfo
 
     public Tilemap[] tilemaps;
 
-    public Object[] objects;
+    public RoomObjectUI[] objects;
 
     void idk()
     {

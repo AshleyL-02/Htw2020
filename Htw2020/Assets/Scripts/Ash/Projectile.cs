@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
     {
         myProjectile = this.gameObject;
 
-        this.gameObject.AddComponent<Object>().setHeight(this.height);  //!adds object component so that projectile gets sprite-sorted
+        this.gameObject.AddComponent<RoomObjectUI>().setHeight(this.height);  //!adds object component so that projectile gets sprite-sorted
     }
 
     // Start is called before the first frame update
@@ -41,7 +41,7 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Object other = collision.gameObject.GetComponent<Object>();
+        RoomObjectUI other = collision.gameObject.GetComponent<RoomObjectUI>();
         if (other != null)    //if collided thing has Object component, need to check if it's tall enough to collide
         {
             if(height < other.getHeight())

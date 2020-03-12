@@ -20,8 +20,6 @@ ________________________ ENEMY AND WEAPON ______________________________________
 Enumeration: ZombieType {NORMAL, CHILD, CRAWLER, SLICER, WHATEVER}	//enum for zombie types, which correspond to arm types
 
 [IDestructable]	//this is an INTERFACE! IDestructable is inherited by Player and Zombie
-	> float baseHealth	
-	> float currHealth
 
 	+ public takeDamage(float damageAmount)
 	+ die()
@@ -55,7 +53,7 @@ Enumeration: ZombieType {NORMAL, CHILD, CRAWLER, SLICER, WHATEVER}	//enum for zo
 
 	+ TBD lol
 
-[Arm] (MB) : ICollectable
+[Arm] (MB) : Item
 	//used by zombie and player. Attacking probably involves coroutines due to cooldown times
 	// each attack determines if it hit something IDestructable (via arm collider's onTriggerEnter?), then calls takeDamage()
 
@@ -69,7 +67,66 @@ Enumeration: ZombieType {NORMAL, CHILD, CRAWLER, SLICER, WHATEVER}	//enum for zo
 
 *	[child class based on enum types]
 
+________________________ INVENTORY __________________________________________________________________________________________________________
 
+	//inventory items have the Object class as a component
+
+
+[InventoryWindowUI] (MB)		//attached to HUD
+	// displays inventory pop-up window
+
+	> private boolean isShowing		// true if window is open
+
+	+ public void showInventoryWindow()	//shows inventory. Prob. calls this.setActive(true)
+	+ public void hideInventoryWindow()
+
+	+ private void "navigateWindow"		//need some methods for navigating window. Like highlighting the currently selected inventory item
+
+	+ readInput() //THIS GETS CALLED BY UPDATE, every frame.	// calls other input reading methods
+		{
+			+ readScrollInput()	//reads for up/down and executes relevant ui action (e.g. Input.GetButtonDown("MenuUp"))
+			+ readSelectInput() //reads for "Select"
+			+ readCancelInput() //reads for "Cancel", if pressed it hides the window
+		}
+
+	- display example:
+		- I prefer text-based windows like this: https://gamecola.net/wp-content/uploads/2016/07/4dbackpack.png
+		- but if you want to do a sprite-based grid inventory window, go for it
+		- window doesn't take up the entire screen, it takes up like 70% of it (like undertale)
+		- inventory displays the description of the item being hovered on
+
+[Inventory]	// a collection of [items]
+
+	- includes a list / bool array of objects in inventory?
+
+	+ addItem()
+	+ removeItem()
+
+[ItemUI] (MB)	//attached to item prefab?
+	
+	> setPosition(Vector2 position)	
+
+[Item] : RoomObject
+	//be wary of Object component
+
+	> string name
+		+ get()
+	> string description
+		+ get()
+	> private GameObject myItem
+		- includes collider, Object component & its data, sprite
+		- try to hard-code as much as possible?
+
+[ItemManager]
+	//connects Prefabs/Items/whatever.gameobject to an item; stored in an array
+	// implement dictionary/hashtable; serialization
+
+[ItemTester_TEMP]
+	// tests class by loading items on ground, allowing players to pick up, use, and drop
+
+	+ loadItemsInRoom(int roomNumber)	//instantiates prefabs for items based on array
+
+	
 
 ________________________ MENU, MAINCONTROL, CONTROLLERMANAGER _________________________________________________________________________________________
 
@@ -104,39 +161,18 @@ Needed information:
 		- undertale ig
 
 
-________________________ LEVEL SERIALIZATION AND SAVING _______________________________________________________________________________________________
+	- navigation code flow: player presses 'e' down and up in door zone -> door tells navi it wants to be opened; navi tells game control via Navigation Event
+		-> GameControl tells navi and other classes to intended room (+ HUD fade?) -> GameControl tells Player their "currentRoom" has changed
+
+________________________ LEVEL/item SERIALIZATION AND SAVING _______________________________________________________________________________________________
 
 
 ________________________ OBJECT, OBJECT MANAGER, ITEM INTERACTIONS ________________________________________________________________
 
-________________________ INVENTORY __________________________________________________________________________________________________________
-
-[ICollectable] (Created by keerthana)
-
-[InventoryUI] (MB)
-	// displays inventory pop-up window
-
-	> private boolean isShowing		// true if window is open
-
-	+ public void showInventoryWindow()	//shows inventory. Prob. calls this.setActive(true)
-	+ public void hideInventoryWindow()
-
-	+ private void "navigateWindow"		//need some methods for navigating window. Like highlighting the currently selected inventory item
-
-	+ readInput() //THIS GETS CALLED BY UPDATE, every frame.	// calls other input reading methods
-		{
-			+ readScrollInput()	//reads for up/down and executes relevant ui action (e.g. Input.GetButtonDown("MenuUp"))
-			+ readSelectInput() //reads for "Select"
-			+ readCancelInput() //reads for "Cancel", if pressed it hides the window
-		}
-
-[InventoryList]
-
-	- includes a list / bool array of objects in inventory?
 
 ________________________ HUD __________________________________________________________________________________________________________________________
 
-[PagerUI] (MB)
+[PagerWindowUI] (MB)
 	// displays hud; may be a static (unique) class
 	// pager controls: p to open, { } to scroll through a message
 	// the display for the pager HUD includes a background image that looks like a pager display, and a textbox on the image
@@ -162,7 +198,7 @@ ________________________ HUD ___________________________________________________
 	> private string[] segmentedMessage	//formatted message
 
 	+ setSegmentedMessage(string message)	//calls formatter and sets field
-	+ string[] formatToSegmentedMessage(string message)	//formats to string[]
+	+ private static string[] formatToSegmentedMessage(string message)	//formats to string[]
 
 	+ string getTextAtIndex(int index)	//returns string at index
 
@@ -170,9 +206,9 @@ ________________________ HUD ___________________________________________________
 
 
 
-________________________ STORYMANAGER, ________________________________________________________________________________________________
+________________________ STORYMANAGER ________________________________________________________________________________________________
 
-[] story tokens
+[]
 [StoryManager]
 	
 
@@ -185,6 +221,7 @@ _________________________ PAGER ________________________________________________
 
 [] pager stuff, dialogue branches
 
+- sitting events
 
 
 
@@ -195,7 +232,8 @@ ________________________ PLAYER ________________________________________________
 ________________________ GAMECONTROL ________________________________________________________________________________________________
 
 
- 
+ - ? communication between: inventory windown pop-up / input controller / player inventory
+ - scene transitions: entering a new room + HUD fade
 
 
 

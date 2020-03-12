@@ -14,9 +14,11 @@ using UnityEngine;
  * can player duck/sit to dodge projectiles?
  * consider setting tag to "Object" for easier detection (instead of using getComponent)
  * 
+ * Change name to ObjectUI?
+ * 
  */
 
-public class Object : MonoBehaviour
+public class RoomObjectUI : MonoBehaviour
 {
     //static variables
     private static readonly string MAIN_SORTING_LAYER_NAME = "Main";    //i.e. the sorting layer where sorted objects are
@@ -25,7 +27,7 @@ public class Object : MonoBehaviour
     [SerializeField]    //! temp
     private float height = 1.0f; //intended height in game space. Assumes object doesn't have holes
 
-    private bool isMoving = true;   // defaults to true
+    private bool isMoveable = true;   // defaults to true
 
     private void Awake()
     {
@@ -58,7 +60,7 @@ public class Object : MonoBehaviour
 
     private void updateZPosition()   //sets z value of the GameObject (to "isometrically sort" it)
     {
-        if (isMoving)
+        if (isMoveable)
         {
             setZPosition();
         }

@@ -151,7 +151,7 @@ Space: Shoot
 Shift: Sprint
 E: interact
 
-tips :p  ---------------------------------------------------------------------------
+tips  ---------------------------------------------------------------------------
 https://www.gamasutra.com/blogs/HermanTulleken/20160812/279100/50_Tips_and_Best_Practices_for_Unity_2016_Edition.php (reaadd me)
 
 	-  push and pull often to avoid merge conflicts
@@ -173,6 +173,7 @@ techniques ---------------------------------------------------------------------
 
 - .xml Serialization
 - Coroutines: use for actions that occur over time (like transitions)
+	- also look in to threading
 - Delegates/ Event system: use to listen for a certain trigger (e.g. door opening)
 	https://www.youtube.com/watch?v=gx0Lt4tCDE0
 - State machine (e.g. with interface array): use to 'plug in' different behaviors (e.g. equipping different weapons, enemy behavior) instead of using

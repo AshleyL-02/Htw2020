@@ -56,9 +56,10 @@ public class PlayerUI : MonoBehaviour
 
         //TESTING EVENTS HERE
 
-        Debug.Log("start event test");
-        StartCoroutine(testOnEventMethod());
-        
+        //Debug.Log("start event test");
+        //StartCoroutine(testOnEventMethod());
+
+        //ENDS HERE
 
     }
 
