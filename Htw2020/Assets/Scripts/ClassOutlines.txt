@@ -126,6 +126,7 @@ ________________________ INVENTORY _____________________________________________
 
 	+ loadItemsInRoom(int roomNumber)	//instantiates prefabs for items based on array
 
+[RoomObject]	//for anything with a physical representation that gets put into a room (includes player, zombies, items, furniture, arms)
 	
 
 ________________________ MENU, MAINCONTROL, CONTROLLERMANAGER _________________________________________________________________________________________

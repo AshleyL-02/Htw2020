@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : RoomObject
 {
-    // Start is called before the first frame update
-    void Start()
+    protected string description;
+
+
+    
+    // ACCESSORS
+    public string getDescription()
     {
-        
+        return description;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // MUTATORS
+
+
+    // METHODS
+
 }
