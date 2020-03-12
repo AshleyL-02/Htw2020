@@ -11,7 +11,7 @@
 
 Alex: Zombie, Idestructable
 Keerthana: Arm, ICollectable
-Bharathi: (HUD)-- PagerHUD, PagerMessage
+Bharathi: (HUD)-- PagerUI, PagerMessage
 Kavi: "Navigation" stuff
 
 
@@ -29,7 +29,7 @@ Enumeration: ZombieType {NORMAL, CHILD, CRAWLER, SLICER, WHATEVER}	//enum for zo
 [Zombie] (MB) : IDestructable
 	// class defines a "normal zombie"
 	// zombie behavior can run on a state machine based on conditions like proximity to player or health 
-	// I have this idea that zombies mutated based their condition as a human (e.g. person with a cold becomes an ice zombie; nurses, children, etc.). idk if this helps with creativity
+	// I have this idea that zombies mutated based their condition as a human (person with a cold becomes an ice zombie; nurses, children, etc.). maybe helps with creativity?
 	
 	> protected readonly ZombieType myType = relevant enum type;
 	> protected static readonly variables for: base health, base speed, etc.
@@ -116,12 +116,23 @@ ________________________ INVENTORY _____________________________________________
 [InventoryUI] (MB)
 	// displays inventory pop-up window
 
-	> public void showInventoryWindow()	//shows inventory
-	> public void hideInventoryWindow()
+	> private boolean isShowing		// true if window is open
 
-	> readInput() //THIS GETS CALLED BY UPDATE, every frame
-		//reads for input (e.g. Input.GetButton("MenuDown") )
+	+ public void showInventoryWindow()	//shows inventory. Prob. calls this.setActive(true)
+	+ public void hideInventoryWindow()
 
+	+ private void "navigateWindow"		//need some methods for navigating window. Like highlighting the currently selected inventory item
+
+	+ readInput() //THIS GETS CALLED BY UPDATE, every frame.	// calls other input reading methods
+		{
+			+ readScrollInput()	//reads for up/down and executes relevant ui action (e.g. Input.GetButtonDown("MenuUp"))
+			+ readSelectInput() //reads for "Select"
+			+ readCancelInput() //reads for "Cancel", if pressed it hides the window
+		}
+
+[InventoryList]
+
+	- includes a list / bool array of objects in inventory?
 
 ________________________ HUD __________________________________________________________________________________________________________________________
 
