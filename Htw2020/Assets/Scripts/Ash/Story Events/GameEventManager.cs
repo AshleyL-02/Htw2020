@@ -1,22 +1,34 @@
 ﻿using System;
 using UnityEngine;
 
-public class GameEventManager : MonoBehaviour
+public class GameEventManager
 {
     public static GameEventManager current;
 
-    private void Awake()
+
+    //CONSTRUCTOR
+    public GameEventManager()
     {
         current = this;
     }
 
-    public event Action onFirstMeetTrigger;
+    //Event trigger methods
 
+    public event Action onFirstMeetTrigger;
     public void firstMeetTrigger()
     {
-        if(onFirstMeetTrigger != null)
+        if (onFirstMeetTrigger != null)
         {
             onFirstMeetTrigger();
+        }
+    }
+
+    public event Action<int> onRoomChangeTrigger;
+    public void onRoomChange(int roomNumber)
+    {
+        if (onRoomChangeTrigger != null)
+        {
+            onRoomChangeTrigger(roomNumber);
         }
     }
 }

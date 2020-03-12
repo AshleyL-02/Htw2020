@@ -16,7 +16,6 @@ public class PlayerUI : MonoBehaviour
     //Static fields
     private static readonly Vector2 START_COOR = new Vector2(0.0f, 1.0f);
 
-    //?
     
 
     //References
@@ -31,7 +30,12 @@ public class PlayerUI : MonoBehaviour
 
     private float speedMultiplier = SPEED;
     private Vector2 lastFacingDirection = Vector2.down;
-        
+
+    //other fields
+    private PlayerData myPlayerData = new PlayerData();
+
+
+    //Field End
 
     private void Awake()
     {
@@ -39,10 +43,6 @@ public class PlayerUI : MonoBehaviour
         myCollider = GetComponent<Collider2D>();
         myAnimator = GetComponent<Animator>();
         myPI = GetComponent<ProjectileInstantiator>();
-
-        //adding components
-        //myPI = this.gameObject.AddComponent<ProjectileInstantiator>();
-        //this.gameObject.AddComponent<Object>();
     }
 
     
@@ -52,9 +52,45 @@ public class PlayerUI : MonoBehaviour
         //this.transform.position = START_COOR;
         //t temp 1
 
+
+
+        //TESTING EVENTS HERE
+
+        Debug.Log("start event test");
+        StartCoroutine(testOnEventMethod());
+        
+
     }
 
-    
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! WATCH OUTTTT
+    private IEnumerator testOnEventMethod()
+    {
+        Debug.Log("waiting to test...");
+        yield return new WaitForSeconds(2.0f);
+
+        Debug.Log("Entered room 0");
+        myPlayerData.setCurrentRoomNumber(0);
+
+        yield return new WaitForSeconds(2.0f);
+
+        Debug.Log("Entered room 1");
+        myPlayerData.setCurrentRoomNumber(1);
+
+        yield return new WaitForSeconds(2.0f);
+
+        Debug.Log("Entered room 2");
+        myPlayerData.setCurrentRoomNumber(2);
+
+        yield return new WaitForSeconds(2.0f);
+
+        Debug.Log("Entered room 3");
+        myPlayerData.setCurrentRoomNumber(3);
+
+        Debug.Log("ended event test");
+
+    }
+
+
     void Update()
     {
         readInput();
@@ -86,9 +122,9 @@ public class PlayerUI : MonoBehaviour
         return movementDirection;
     }
 
-
-    //Mutators
-
+    
+    //MUTATORS
+    
 
     //PRIVATE METHODS
     private Vector2 cardinalizeVector(Vector2 movementDirection)    //turn vector into an up, down, left, or right vector
@@ -131,6 +167,7 @@ public class PlayerUI : MonoBehaviour
     }
 
     //Input methods
+
     private void readInput()
     {
         readSprintInput();

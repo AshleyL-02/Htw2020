@@ -5,33 +5,13 @@ using UnityEngine;
 /*
  * Attach script to player for now 
  * 
- * 
+ * sub-types of events: inventory-dependent, location-dependent, dialogue-dependent
  * 
  */
 
-public class GameEventListener : MonoBehaviour
+public class GameEventListener
 {
-    private void Start()
-    {
-        Debug.Log("start wait");
-        StartCoroutine(waitToMeet());
-    }
 
-    private void Update()
-    {
-        
-    }
-
-
-    private IEnumerator waitToMeet()
-    {
-        Debug.Log("waiting...");
-        yield return new WaitForSeconds(2.0f);
-        Debug.Log("waiting...");
-        yield return new WaitForSeconds(2.0f);
-
-        onFirstMeet();
-    }
 
 
     private void onFirstMeet()
@@ -39,4 +19,5 @@ public class GameEventListener : MonoBehaviour
         Debug.Log("Meeting pk");
         GameEventManager.current.firstMeetTrigger();
     }
+
 }
