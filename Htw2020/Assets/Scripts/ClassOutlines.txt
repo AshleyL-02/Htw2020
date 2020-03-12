@@ -81,6 +81,7 @@ Needed information:
 	// the rooms can all be rectangles if you want
 	// need some way of returning the floormap (e.g. array with 0 for not floor, 1 for floor)  of a room. If it's a rectangle, then just returns dimensions, like (4,5)
 		//also indicate door position on floormap
+	// Doors will only be connected to the north and south of rooms (in 2.5d perspective you can't draw east and west doors). East and west hallways are ok though
 
 	// ingame display of floor involves a tilemap with a continuous collider; player spawns inside the collider
 
@@ -105,11 +106,13 @@ ________________________ HUD ___________________________________________________
 [PagerHUD] (MB)
 	// displays hud; may be a static (unique) class
 	// pager controls: p to open, { } to scroll through a message
+	// the display for the pager HUD includes a background image that looks like a pager display, and a textbox on the image
 
 	> private bool isPagerShowing	//true if pager is being displayed
 
-	> private PagerMessage currMessage	//current message
-	> private int pagerMessageIndex	//index of message
+	> private PagerMessage currentMessage	//current message
+	> private int currentMessageIndex	//index of message
+	> private boolean wasMessageRead
 
 	+ showPager()	//displays and updates pager, which is at the lower right corner of the screen, updates isPagerShowing
 	+ hidePager()	//hides pager, updates field isPagerShowing
