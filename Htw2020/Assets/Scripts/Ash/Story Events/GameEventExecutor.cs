@@ -10,6 +10,13 @@ using UnityEngine;
  * Any class that needs to subscribe to events will have a global object (PagerEventExecutor, for e.g.); that inherits GameEventExecutor?
  * 
  * remember to unsubscribe events
+ * 
+ * Use coroutines or threading for multi-event story sequences?
+ * 
+ * think up a sample story with a few events and execute that to practice
+ * 
+ * sub-types of events: inventory-dependent, location-dependent, dialogue-dependent
+ * 
  */
 
 public class GameEventExecutor : MonoBehaviour

@@ -48,8 +48,9 @@ Enumeration: ZombieType {NORMAL, CHILD, CRAWLER, SLICER, WHATEVER}	//enum for zo
 
 	+ @Override methods for whatever behaviors are different from base class
 
-[ICollectable]
+[ICollectable]	//an interface
 	//refers to things that can be collected in inventory
+
 	> string name
 
 	+ TBD lol
@@ -78,6 +79,8 @@ _________________________ CONTROLLER ______________________________________
 
 // pager controls: p to open, { } to scroll through a message
 
+- use an interface machine?
+
 
 
 ________________________ NAVIGATION ______________________________________
@@ -104,11 +107,25 @@ Needed information:
 ________________________ LEVEL SERIALIZATION AND SAVING _______________________________________________________________________________________________
 
 
-________________________ OBJECT, OBJECT MANAGER, INVENTORY, ITEM INTERACTIONS ________________________________________________________________
+________________________ OBJECT, OBJECT MANAGER, ITEM INTERACTIONS ________________________________________________________________
+
+________________________ INVENTORY __________________________________________________________________________________________________________
+
+[ICollectable] (Created by keerthana)
+
+[InventoryUI] (MB)
+	// displays inventory pop-up window
+
+	> public void showInventoryWindow()	//shows inventory
+	> public void hideInventoryWindow()
+
+	> readInput() //THIS GETS CALLED BY UPDATE, every frame
+		//reads for input (e.g. Input.GetButton("MenuDown") )
+
 
 ________________________ HUD __________________________________________________________________________________________________________________________
 
-[PagerHUD] (MB)
+[PagerUI] (MB)
 	// displays hud; may be a static (unique) class
 	// pager controls: p to open, { } to scroll through a message
 	// the display for the pager HUD includes a background image that looks like a pager display, and a textbox on the image
