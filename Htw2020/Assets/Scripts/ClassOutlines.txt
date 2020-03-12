@@ -10,7 +10,7 @@
 .. working game by may 1, features "implemented" march 15th?
 
 Alex: Zombie, Idestructable
-Keerthana: Arm
+Keerthana: Arm, ICollectable
 Bharathi: (HUD)-- PagerHUD, PagerMessage
 Kavi: "Navigation" stuff
 
@@ -48,8 +48,13 @@ Enumeration: ZombieType {NORMAL, CHILD, CRAWLER, SLICER, WHATEVER}	//enum for zo
 
 	+ @Override methods for whatever behaviors are different from base class
 
+[ICollectable]
+	//refers to things that can be collected in inventory
+	> string name
 
-[Arm] (MB)
+	+ TBD lol
+
+[Arm] (MB) : ICollectable
 	//used by zombie and player. Attacking probably involves coroutines due to cooldown times
 	// each attack determines if it hit something IDestructable (via arm collider's onTriggerEnter?), then calls takeDamage()
 

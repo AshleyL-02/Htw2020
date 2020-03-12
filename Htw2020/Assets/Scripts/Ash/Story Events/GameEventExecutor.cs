@@ -7,6 +7,9 @@ using UnityEngine;
  * look up singletons 
  * 
  * THIS CLASS IS TEMPORARY!!!!!!!!!!
+ * Any class that needs to subscribe to events will have a global object (PagerEventExecutor, for e.g.); that inherits GameEventExecutor?
+ * 
+ * remember to unsubscribe events
  */
 
 public class GameEventExecutor : MonoBehaviour

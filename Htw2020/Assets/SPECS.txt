@@ -9,7 +9,6 @@ CLASSES ------------------------------------------------------------------------
 
 Alex
 - Enemy
-	- enemy "ai": pathfinding, attack/find cover
 - Wumpus
 
 Ashley
