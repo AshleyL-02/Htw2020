@@ -25,12 +25,13 @@ public class RoomObject //change this or roomobjectui to scriptable object?
     }
     public void setupRoomObject(RoomObject other)
     {
+        this.mySprite = other.getSprite();
         this.name = other.getName();
         this.description = other.getDescription();          
     }
 
 
-    //ACCESSORS
+    // ACCESSORS
     public string getName()
     {
         return name;
@@ -38,6 +39,17 @@ public class RoomObject //change this or roomobjectui to scriptable object?
     public string getDescription()
     {
         return description;
+    }
+    public Sprite getSprite()
+    {
+        return mySprite;
+    }
+
+
+    // MUTATORS
+    public void setSprite(Sprite sprite)
+    {
+        mySprite = sprite;
     }
 
 

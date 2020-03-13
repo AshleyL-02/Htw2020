@@ -218,13 +218,17 @@ public class PlayerUI : MonoBehaviour
             Debug.DrawLine(new Vector2(this.transform.position.x, this.transform.position.y + myCollider.offset.y), new Vector2(this.transform.position.x, this.transform.position.y + myCollider.offset.y) + facingDirection, Color.red, 1.0f);
             RaycastHit2D interactRay = Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y + myCollider.offset.y), facingDirection, 1.0f);//change to arrow direction
 
-            // tells other object to execute interact
-            RoomObjectUI targetRoomObjectUI = interactRay.collider.GetComponent<RoomObjectUI>();
-            if (targetRoomObjectUI != null)
+
+            if(interactRay.collider != null)
             {
-                Debug.Log(targetRoomObjectUI.name);
-                targetRoomObjectUI.interact();
+                // tells other object to execute interact
+                IInteractable interactTarget = interactRay.collider.GetComponent<IInteractable>();
+                if (interactTarget != null)
+                {
+                    interactTarget.interact();
+                }
             }
+           
         }
     }
 

@@ -8,7 +8,7 @@ using UnityEngine;
  * Instantiates Room Objects based on room object map
  * 
  * GameObject go = (GameObject)Instantiate(Resources.Load("MyPrefab")); 
- * Sprite.Create()
+ * Implement hash table
  * 
  */
 public class RoomObjectManager : MonoBehaviour
@@ -28,12 +28,12 @@ public class RoomObjectManager : MonoBehaviour
     //statid fields for object defaults
 
     //fields
-    private List<GameObject> roomObjectGameObjectDirectory = new List<GameObject>();
+    
 
     private Sprite[] spriteDirectory;
     
 
-    private int[,] testRoomObjectMap = new int[TESTROOM_WIDTH, TESTROOM_HEIGHT];
+    private string[,] testRoomObjectMap = new string[TESTROOM_WIDTH, TESTROOM_HEIGHT];
 
 
     private void Awake()
@@ -56,32 +56,68 @@ public class RoomObjectManager : MonoBehaviour
         temp.Add(new RoomObject());
         temp[4].setupRoomObject("Stone Stairs", "You could sit on these.");
 
-        overwriteRoomObjectPrefabDirectory(temp);
+        overwriteRoomObjectDirectory(temp);
         */
-
-        //load sprites
-        loadSpriteDirectory();
-        loadRoomObjectDirectory();
-        loadRoomObjectGameObjectDirectory();
+        loadAllDirectories();
+        
 
         //set items in map
-        for (int w = 0; w < testRoomObjectMap.GetLength(0); w++)
-        {
-            for (int h = 0; h < testRoomObjectMap.GetLength(1); h++)
-            {
-                testRoomObjectMap[w, h] = -1;
-            }
-        }
-
-        testRoomObjectMap[0, 0] = 0;
-        testRoomObjectMap[0, TESTROOM_HEIGHT -1] = 1;
-        testRoomObjectMap[TESTROOM_WIDTH -1, 0] = 2;
-        testRoomObjectMap[TESTROOM_WIDTH -1, TESTROOM_HEIGHT -1] = 3;
-        testRoomObjectMap[1, 1] = 4;
+        testRoomObjectMap[0, 0] = "Apple";
+        testRoomObjectMap[0, TESTROOM_HEIGHT -1] = "Red Robe";
+        testRoomObjectMap[TESTROOM_WIDTH -1, 0] = "Stone Stairs";
+        testRoomObjectMap[TESTROOM_WIDTH -1, TESTROOM_HEIGHT -1] = "Boots";
+        testRoomObjectMap[1, 1] = "Key";
 
         //load objects
         loadRoomObjectsInTestRoom();
 
+    }
+
+    // ACCESSORS
+    private Sprite getSpriteFromDirectory(string spriteName)
+    {
+        if(spriteDirectory != null)
+        {
+            foreach(Sprite sprite in spriteDirectory)
+            {
+                if (sprite.name.Equals(spriteName))
+                {
+                    return sprite;
+                }
+            }
+            Debug.LogError("Could not find corresponding sprite");
+        }
+        else
+        {
+            Debug.LogError("Sprite directory is null; couldn't find sprite");
+        }
+
+        return null;
+    }
+
+    private RoomObject getRoomObjectFromDirectory(string roomObjectName)
+    {
+        foreach(RoomObject roomObject in roomObjectDirectory)
+        {
+            if (roomObject.name.Equals(roomObjectName))
+            {
+                return roomObject;
+            }
+        }
+        Debug.LogError("Couldn't find Room Object in directory: " + roomObjectName);
+        return null;
+    }
+
+    private void instantiateRoomObjectGameObject(string name, Vector2 position)
+    {
+        GameObject roomObjectGameObject = new GameObject(name);
+        RoomObject roomObject = getRoomObjectFromDirectory(name);
+
+        RoomObjectUI roomObjectUI = roomObjectGameObject.AddComponent<RoomObjectUI>();
+
+        roomObjectUI.setupRoomObjectGameObject(roomObjectGameObject, roomObject);
+
+        roomObjectGameObject.transform.position = position;
     }
 
 
@@ -94,22 +130,12 @@ public class RoomObjectManager : MonoBehaviour
         {
             for (int y = 0; y < testRoomObjectMap.GetLength(1); y++)
             {
-                int directoryIndex = testRoomObjectMap[x, y];
+                string roomObjectName = testRoomObjectMap[x, y];
 
-                 if (directoryIndex >= 0)   //if valid object #
-                {                                 
-                    if(directoryIndex < roomObjectGameObjectDirectory.Count)
-                    {
-                        GameObject roomObjectGameObject = roomObjectGameObjectDirectory[directoryIndex];
-                        Vector3 position = calculatePositionFromGrid(x, y);
-
-                        Instantiate(roomObjectGameObject, position, Quaternion.identity).SetActive(true);
-                        
-                    }
-                    else
-                    {
-                        Debug.Log("Couldn't find RoomObjectGameObject at index: " + directoryIndex);
-                    }                
+                 if (roomObjectName != null)   //if valid object #
+                {                  
+                    Vector3 position = calculatePositionFromGrid(x, y);
+                    instantiateRoomObjectGameObject(roomObjectName, position);
                 }
             }
         }
@@ -127,46 +153,25 @@ public class RoomObjectManager : MonoBehaviour
     }
 
     //SERIALIZATION METHODS
+    private void loadAllDirectories()
+    {
+        loadSpriteDirectory();
+        loadRoomObjectDirectory();
+        addSpritesToRoomObjectDirectory();
+    }
     private void loadSpriteDirectory()
     {
         spriteDirectory = Resources.LoadAll<Sprite>(SPRITE_DIRECTORY_RESOURCES_PATH);
     }
-    private void loadRoomObjectGameObjectDirectory()
+    
+    private void addSpritesToRoomObjectDirectory()
     {
-
-        foreach(Sprite sprite in spriteDirectory)
+        foreach (RoomObject roomObject in roomObjectDirectory)
         {
-            string name = sprite.name;
-            GameObject roomObjectGameObject = new GameObject(name);
-
-            roomObjectGameObject.AddComponent<SpriteRenderer>().sprite = sprite;
-
-            bool foundCorrespondingRoomObject = false;
-
-            //look for room object with same name
-            foreach(RoomObject roomObject in roomObjectDirectory)
-            {
-                if (roomObject.getName().Equals(name))
-                {                   
-                    RoomObjectUI roomObjectUI = roomObjectGameObject.AddComponent<RoomObjectUI>();
-
-                    roomObjectUI.setupGameObjectWithDefaults(roomObjectGameObject, roomObject);
-
-                    foundCorrespondingRoomObject = true;
-
-                    break;
-                }
-            }
-            if(foundCorrespondingRoomObject == false)
-            {
-                Debug.Log("Couldn't find serialized room object for sprite: " + name);
-            }
-
-            roomObjectGameObject.SetActive(false);
-            roomObjectGameObjectDirectory.Add(roomObjectGameObject);
+            roomObject.setSprite(getSpriteFromDirectory(roomObject.name));
         }
-    }
 
+    }
     private void loadRoomObjectDirectory()
     {
         if (File.Exists(ROOMOBJECT_DIRECTORY_PATH))
@@ -178,9 +183,8 @@ public class RoomObjectManager : MonoBehaviour
             reader.Close();
         }
     }
-    private void overwriteRoomObjectPrefabDirectory(List<RoomObject> newRoomObjectDirectory)
+    private void overwriteRoomObjectDirectory(List<RoomObject> newRoomObjectDirectory)
     {
-
         Type t = newRoomObjectDirectory.GetType();
         XmlSerializer serz = new XmlSerializer(t);
         StreamWriter writer = new StreamWriter(ROOMOBJECT_DIRECTORY_PATH, false);    //overwrites file or creates a new one

@@ -20,7 +20,7 @@ public class RoomObjectUI : MonoBehaviour, IInteractable
 
     //static fields
     public static readonly string MAIN_SORTING_LAYER_NAME = "Main";    //i.e. the sorting layer where sorted objects are
-    public static readonly float DEFAULT_COLLIDER_SIZE = 0.4f;
+    public static readonly float DEFAULT_COLLIDER_SIZE = 0.5f;
     public static readonly float DEFAULT_HEIGHT = 1.0f;
 
     //Fields
@@ -37,7 +37,11 @@ public class RoomObjectUI : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = MAIN_SORTING_LAYER_NAME;
+        if (this.gameObject.GetComponent<SpriteRenderer>() != null)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = MAIN_SORTING_LAYER_NAME;
+        }
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -70,16 +74,22 @@ public class RoomObjectUI : MonoBehaviour, IInteractable
     }
 
     // METHODS
-    public void setupGameObjectWithDefaults(GameObject roomObjectGameObject, RoomObject roomObject)  //adds default components to room object
+    public void setupRoomObjectGameObject(GameObject roomObjectGameObject, RoomObject roomObject)  //adds default components to room object
     {
         this.myRoomObject.setupRoomObject(roomObject);
+
+        if(roomObjectGameObject.GetComponent<SpriteRenderer>() == null)
+        {
+            roomObjectGameObject.AddComponent<SpriteRenderer>().sprite = roomObject.getSprite();
+            this.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = MAIN_SORTING_LAYER_NAME;
+        }
 
         if (roomObjectGameObject.GetComponent<Collider2D>() == null)
         {
             BoxCollider2D collider = roomObjectGameObject.AddComponent<BoxCollider2D>();
             collider.size = new Vector2(DEFAULT_COLLIDER_SIZE, DEFAULT_COLLIDER_SIZE);
             collider.offset = new Vector2(0f, DEFAULT_COLLIDER_SIZE / 2f);
-        }        
+        }
     }
 
     private void updateZPosition()   //sets z value of the GameObject (to "isometrically sort" it)
