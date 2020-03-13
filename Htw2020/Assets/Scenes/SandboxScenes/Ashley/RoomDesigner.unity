@@ -155,7 +155,7 @@ Transform:
   - {fileID: 187380136}
   - {fileID: 2078194958}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &187380134
 GameObject:
@@ -1878,6 +1878,55 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1346795531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1346795533}
+  - component: {fileID: 1346795532}
+  m_Layer: 0
+  m_Name: RoomObjectManager_Temp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1346795532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346795531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9625a96089f0d3541a2f724cb0fa7d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomObjectPrefabDirectory:
+  - {fileID: 3053001685802301556, guid: d252e7cc13ed0ba4e8a8c8e7860ae35e, type: 3}
+  - {fileID: 2105600274872168244, guid: c290947dfd305b54780ba850b74ce7e1, type: 3}
+  - {fileID: 6271342667482592296, guid: 372c0375593a0d14e94e479dec60718e, type: 3}
+  - {fileID: 5637633232486327034, guid: cc9ab8028d97c1c41b1c10db5e98d61a, type: 3}
+  - {fileID: 1074184280471116639, guid: f06586d70d5cb7d4dabbdf2b09bed697, type: 3}
+--- !u!4 &1346795533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346795531}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1966201799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2800,7 +2849,7 @@ Transform:
   m_Children:
   - {fileID: 4040181204215440958}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &6166712563158816495
 CircleCollider2D:
