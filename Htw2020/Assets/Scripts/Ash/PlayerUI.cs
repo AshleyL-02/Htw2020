@@ -25,8 +25,8 @@ public class PlayerUI : MonoBehaviour
     private ProjectileInstantiator myPI;
 
     //Movement/input-related fields (consider putting in player data class?)
-    private static readonly float SPEED = 1.8f;
-    private static readonly float SPRINT_MULTIPLIER = 2.0f;
+    private static readonly float SPEED = 2.4f;
+    private static readonly float SPRINT_MULTIPLIER = 2.5f;
 
     private float speedMultiplier = SPEED;
     private Vector2 lastFacingDirection = Vector2.down;
@@ -218,9 +218,12 @@ public class PlayerUI : MonoBehaviour
             Debug.DrawLine(new Vector2(this.transform.position.x, this.transform.position.y + myCollider.offset.y), new Vector2(this.transform.position.x, this.transform.position.y + myCollider.offset.y) + facingDirection, Color.red, 1.0f);
             RaycastHit2D interactRay = Physics2D.Raycast(new Vector2(this.transform.position.x, this.transform.position.y + myCollider.offset.y), facingDirection, 1.0f);//change to arrow direction
 
-            if (interactRay.collider != null)
+            // tells other object to execute interact
+            RoomObjectUI targetRoomObjectUI = interactRay.collider.GetComponent<RoomObjectUI>();
+            if (targetRoomObjectUI != null)
             {
-                Debug.Log(interactRay.collider.ToString());
+                Debug.Log(targetRoomObjectUI.name);
+                targetRoomObjectUI.interact();
             }
         }
     }

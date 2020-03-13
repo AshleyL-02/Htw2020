@@ -2,13 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomObject
+public class RoomObject //change this or roomobjectui to scriptable object?
 {
-    //static fields
-    public static readonly string MAIN_SORTING_LAYER_NAME = "Main";    //i.e. the sorting layer where sorted objects are
-    public static readonly float DEFAULT_COLLIDER_SIZE = 0.4f;
-    public static readonly float DEFAULT_HEIGHT = 1.0f;
+
 
     //fields
-    protected GameObject myGameObject;
+    protected Sprite mySprite;
+
+
+    //protected GameObject myGameObject;
+
+    // things to serialize
+    public string name;
+    public string description;
+
+
+    public RoomObject() { }
+    public void setupRoomObject(string name, string description)
+    {
+        this.name = name;
+        this.description = description;
+    }
+    public void setupRoomObject(RoomObject other)
+    {
+        this.name = other.getName();
+        this.description = other.getDescription();          
+    }
+
+
+    //ACCESSORS
+    public string getName()
+    {
+        return name;
+    }
+    public string getDescription()
+    {
+        return description;
+    }
+
+
+
 }

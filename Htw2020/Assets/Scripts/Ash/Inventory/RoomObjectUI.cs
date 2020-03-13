@@ -15,11 +15,21 @@ using UnityEngine;
  * 
  */
 
-public class RoomObjectUI : MonoBehaviour
+public class RoomObjectUI : MonoBehaviour, IInteractable
 {
-    //other variables
+
+    //static fields
+    public static readonly string MAIN_SORTING_LAYER_NAME = "Main";    //i.e. the sorting layer where sorted objects are
+    public static readonly float DEFAULT_COLLIDER_SIZE = 0.4f;
+    public static readonly float DEFAULT_HEIGHT = 1.0f;
+
+    //Fields
+    private RoomObject myRoomObject = new RoomObject();
+
+
     [SerializeField]    //! temp
-    private float height = RoomObject.DEFAULT_HEIGHT; //intended height in game space. Assumes object doesn't have holes
+    private float height = DEFAULT_HEIGHT; //intended height in game space. Assumes object doesn't have holes
+
 
     private bool isMoveable = true;   // defaults to true
 
@@ -27,7 +37,7 @@ public class RoomObjectUI : MonoBehaviour
 
     private void Awake()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = RoomObject.MAIN_SORTING_LAYER_NAME;
+        this.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = MAIN_SORTING_LAYER_NAME;
     }
     // Start is called before the first frame update
     void Start()
@@ -40,37 +50,35 @@ public class RoomObjectUI : MonoBehaviour
     {
         updateZPosition();
     }
-    //ACCESSORS 
+    // ACCESSORS 
     public float getHeight()
     {
         return height;
     }
 
-    //MUTATORS
+
+    // MUTATORS
     public void setHeight(float height)
     {
         this.height = height;
     }
 
-    //Methods
-    public static void instantiateRoomObjectWithDefaults(GameObject roomObjectPrefab, Vector3 position) // instantiates gameobject with default settings
+    // IInteractable methods
+    public void interact()
     {
-        GameObject roomObjectClone = Instantiate(roomObjectPrefab, position, Quaternion.identity);
-
-        setupRoomObjectDefaults(roomObjectClone);
+        Debug.Log(myRoomObject.getDescription());
     }
-    private static void setupRoomObjectDefaults(GameObject roomObject)  //adds default components to room object
-    {
-        if(roomObject.GetComponent<RoomObjectUI>() == null)
-        {
-            roomObject.AddComponent<RoomObjectUI>();
-        }
 
-        if (roomObject.GetComponent<Collider2D>() == null)
+    // METHODS
+    public void setupGameObjectWithDefaults(GameObject roomObjectGameObject, RoomObject roomObject)  //adds default components to room object
+    {
+        this.myRoomObject.setupRoomObject(roomObject);
+
+        if (roomObjectGameObject.GetComponent<Collider2D>() == null)
         {
-            BoxCollider2D collider = roomObject.AddComponent<BoxCollider2D>();
-            collider.size = new Vector2(RoomObject.DEFAULT_COLLIDER_SIZE, RoomObject.DEFAULT_COLLIDER_SIZE);
-            collider.offset = new Vector2(0f, RoomObject.DEFAULT_COLLIDER_SIZE / 2f);
+            BoxCollider2D collider = roomObjectGameObject.AddComponent<BoxCollider2D>();
+            collider.size = new Vector2(DEFAULT_COLLIDER_SIZE, DEFAULT_COLLIDER_SIZE);
+            collider.offset = new Vector2(0f, DEFAULT_COLLIDER_SIZE / 2f);
         }        
     }
 

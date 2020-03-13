@@ -24,18 +24,11 @@ public class GameEventExecutor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameEventManager.current.onFirstMeetTrigger += onFirstMeetEvent;
-
         GameEventManager.current.onRoomChangeTrigger += onRoomChangeEventSendPagerMessage;
 
 
     }
 
-    private void onFirstMeetEvent()
-    {
-        Debug.Log("pk gives you bubbles");
-        
-    }
 
     private void onRoomChangeEventSendPagerMessage(int roomNumber)
     {

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfRoomObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <RoomObject>
+    <name>Apple</name>
+    <description>It's an apple</description>
+  </RoomObject>
+  <RoomObject>
+    <name>Boots</name>
+    <description>They're dirty and old and smell like vomit</description>
+  </RoomObject>
+  <RoomObject>
+    <name>Key</name>
+    <description>There's a morse code chart carved into its backside</description>
+  </RoomObject>
+  <RoomObject>
+    <name>Red Robe</name>
+    <description>Luxurious.</description>
+  </RoomObject>
+  <RoomObject>
+    <name>Stone Stairs</name>
+    <description>You could sit on these.</description>
+  </RoomObject>
+</ArrayOfRoomObject>

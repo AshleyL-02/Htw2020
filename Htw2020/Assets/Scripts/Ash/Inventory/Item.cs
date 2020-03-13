@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Item : RoomObject
 {
-    protected string description;
+    
+    
 
 
     
     // ACCESSORS
-    public string getDescription()
-    {
-        return description;
-    }
+    
 
     // MUTATORS
 

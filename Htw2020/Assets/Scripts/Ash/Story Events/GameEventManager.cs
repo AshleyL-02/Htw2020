@@ -14,15 +14,6 @@ public class GameEventManager
 
     //Event trigger methods
 
-    public event Action onFirstMeetTrigger;
-    public void firstMeetTrigger()
-    {
-        if (onFirstMeetTrigger != null)
-        {
-            onFirstMeetTrigger();
-        }
-    }
-
     public event Action<int> onRoomChangeTrigger;
     public void onRoomChange(int roomNumber)
     {
@@ -31,4 +22,6 @@ public class GameEventManager
             onRoomChangeTrigger(roomNumber);
         }
     }
+
+
 }

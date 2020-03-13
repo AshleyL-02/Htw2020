@@ -117,14 +117,12 @@ ________________________ INVENTORY _____________________________________________
 		- includes collider, Object component & its data, sprite
 		- try to hard-code as much as possible?
 
-[ItemManager]
+[ItemManager]	//consider combining with RoomObjectManager
 	//connects Prefabs/Items/whatever.gameobject to an item; stored in an array
 	// implement dictionary/hashtable; serialization
 
-[ItemTester_TEMP]
+[RoomObjectManager]
 	// tests class by loading items on ground, allowing players to pick up, use, and drop
-
-	+ loadItemsInRoom(int roomNumber)	//instantiates prefabs for items based on array
 
 [RoomObject]	//for anything with a physical representation that gets put into a room (includes player, zombies, items, furniture, arms)
 	
@@ -138,6 +136,11 @@ _________________________ CONTROLLER ______________________________________
 // pager controls: p to open, { } to scroll through a message
 
 - use an interface machine?
+
+
+__________________________ ITEM INTERACTIONS ______________________________________________________________________________
+
+
 
 
 
@@ -168,7 +171,7 @@ Needed information:
 ________________________ LEVEL/item SERIALIZATION AND SAVING _______________________________________________________________________________________________
 
 
-________________________ OBJECT, OBJECT MANAGER, ITEM INTERACTIONS ________________________________________________________________
+________________________ OBJECT, OBJECT MANAGER ________________________________________________________________
 
 
 ________________________ HUD __________________________________________________________________________________________________________________________
@@ -177,6 +180,7 @@ ________________________ HUD ___________________________________________________
 	// displays hud; may be a static (unique) class
 	// pager controls: p to open, { } to scroll through a message
 	// the display for the pager HUD includes a background image that looks like a pager display, and a textbox on the image
+	/ display is at the upper right corner of the screen,
 
 	> private bool isPagerShowing	//true if pager is being displayed
 
@@ -184,7 +188,7 @@ ________________________ HUD ___________________________________________________
 	> private int currentMessageIndex	//index of message
 	> private boolean wasMessageRead
 
-	+ showPager()	//displays and updates pager, which is at the lower right corner of the screen, updates isPagerShowing
+	+ showPager()	//displays and updates pager, updates isPagerShowing
 	+ hidePager()	//hides pager, updates field isPagerShowing
 	+ showNextMessageText()	//shows text at pagerMessageIndex +1
 	+ showCurrMessageText() //shows text at pagerMessageIndex; called during showPager()?
