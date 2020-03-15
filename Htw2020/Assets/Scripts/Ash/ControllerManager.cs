@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,14 +10,12 @@ public enum InputController
     DESCRIPTION,
 }
 
-public class InputManager : MonoBehaviour
+public class ControllerManager : MonoBehaviour
 {
     public Component[] controllerComponents_temp = new Component[System.Enum.GetNames(typeof(InputController)).Length];  //helps serialize interfaces
 
     private IReadsInput[] controllers;
     private int currentController = 1;
-
-    
 
 
     // normal game controls, inventory controls, description box controls,
@@ -25,8 +23,6 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         GameEventManager.current.onControllerChangeTrigger += onControllerChangeEvent;
-
-        
 
 
     }
@@ -51,6 +47,8 @@ public class InputManager : MonoBehaviour
     private void onControllerChangeEvent(InputController nextController)
     {
         currentController = (int)nextController;
+
+        Debug.Log("Changed controller to: " + System.Enum.GetName(typeof(InputController), nextController));
     }
 
 

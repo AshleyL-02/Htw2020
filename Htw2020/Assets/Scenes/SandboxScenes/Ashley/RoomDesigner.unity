@@ -1907,12 +1907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9625a96089f0d3541a2f724cb0fa7d00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomObjectPrefabDirectory:
-  - {fileID: 3053001685802301556, guid: d252e7cc13ed0ba4e8a8c8e7860ae35e, type: 3}
-  - {fileID: 2105600274872168244, guid: c290947dfd305b54780ba850b74ce7e1, type: 3}
-  - {fileID: 6271342667482592296, guid: 372c0375593a0d14e94e479dec60718e, type: 3}
-  - {fileID: 5637633232486327034, guid: cc9ab8028d97c1c41b1c10db5e98d61a, type: 3}
-  - {fileID: 1074184280471116639, guid: f06586d70d5cb7d4dabbdf2b09bed697, type: 3}
 --- !u!4 &1346795533
 Transform:
   m_ObjectHideFlags: 0
@@ -2801,8 +2795,11 @@ GameObject:
   - component: {fileID: 6166712563158816495}
   - component: {fileID: 5159359014369895996}
   - component: {fileID: 5159359014369895994}
+  - component: {fileID: 6166712563158816496}
   - component: {fileID: 3716095684050213477}
   - component: {fileID: 5159359014410375878}
+  - component: {fileID: 6166712563158816497}
+  - component: {fileID: 6166712563158816498}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2841,3 +2838,44 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.15}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!114 &6166712563158816496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6166712563158816493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be3820fdf9a962498349e2ff5561117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6166712563158816497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6166712563158816493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1555a451870e8904db43f89f96484309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerComponents_temp:
+  - {fileID: 0}
+  - {fileID: 6166712563158816496}
+  - {fileID: 6166712563158816498}
+  - {fileID: 0}
+--- !u!114 &6166712563158816498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6166712563158816493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e9e912208d62a439132e324c780d25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -40,11 +40,7 @@ public class PlayerController : MonoBehaviour, IReadsInput
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     //ACCESSORS
     private Vector2 getInputMovementDirection()    //normalized direction vector based on wasd input //! consider setting a private variable for this value
@@ -102,6 +98,7 @@ public class PlayerController : MonoBehaviour, IReadsInput
     {
         readSprintInput();
         readSelectInput();
+        readInventoryOpenInput();
 
         readShootInput();
 
@@ -162,6 +159,13 @@ public class PlayerController : MonoBehaviour, IReadsInput
                 }
             }
 
+        }
+    }
+    private void readInventoryOpenInput()
+    {
+        if (Input.GetButtonDown("Inventory"))
+        {
+            GameEventManager.current.onControllerChange(InputController.INVENTORY);
         }
     }
 
