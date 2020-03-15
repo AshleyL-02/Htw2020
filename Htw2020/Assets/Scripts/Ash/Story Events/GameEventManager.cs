@@ -10,7 +10,19 @@ public class GameEventManager
     public GameEventManager()
     {
         current = this;
+        
     }
+
+    //Controller event trigger method
+    public event Action<InputController> onControllerChangeTrigger;
+    public void onControllerChange(InputController nextController)
+    {
+        if(onControllerChangeTrigger != null)
+        {
+            onControllerChangeTrigger(nextController);
+        }
+    }
+
 
     //Event trigger methods
 
@@ -23,5 +35,5 @@ public class GameEventManager
         }
     }
 
-
+    
 }
