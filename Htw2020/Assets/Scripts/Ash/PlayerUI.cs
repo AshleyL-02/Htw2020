@@ -6,10 +6,7 @@ using UnityEngine;
  * 
  * "cardinalizing" movement direction will be unnecessary if sprite (art) can face 8 directions
  * 
- * 
  */
-
-
 
 public class PlayerUI : MonoBehaviour
 {

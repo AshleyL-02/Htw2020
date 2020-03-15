@@ -4,8 +4,11 @@ using System.IO;
 using System.Xml.Serialization;
 using UnityEngine;
 
+// tilemap.SetTile(new Vector3Int(), tile);
+
 /*
  * Instantiates Room Objects based on room object map
+ * Serializes RoomObjects
  * 
  * GameObject go = (GameObject)Instantiate(Resources.Load("MyPrefab")); 
  * Implement hash table
@@ -58,6 +61,8 @@ public class RoomObjectManager : MonoBehaviour
 
         overwriteRoomObjectDirectory(temp);
         */
+
+
         loadAllDirectories();
         
 
