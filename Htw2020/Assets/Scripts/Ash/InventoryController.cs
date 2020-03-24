@@ -13,6 +13,8 @@ public class InventoryController : MonoBehaviour, IReadsInput
 
     public void readInput()
     {
+        // delegate array for nested windows
+
 
         readCancelInput();
 
@@ -20,7 +22,7 @@ public class InventoryController : MonoBehaviour, IReadsInput
 
     private void readCancelInput()
     {
-        if (Input.GetButtonDown("Cancel"))  //use event trigger. change it asap
+        if (Input.GetButtonDown("Inventory"))
         {
             //!
             // Hide inventory window, set any bools
